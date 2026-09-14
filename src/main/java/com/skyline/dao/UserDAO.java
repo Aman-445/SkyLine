@@ -196,4 +196,38 @@ public class UserDAO {
             return false;
         }
     }
+
+    public List<User> getActiveEmployees() {
+        List<User> list = new ArrayList<>();
+
+        String sql = "SELECT * FROM users " +
+                "WHERE user_type = 'Employee' " +
+                "AND status IN ('Active', 'Online') " +
+                "ORDER BY full_name";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                User user = new User();
+
+                user.setId(rs.getInt("id"));
+                user.setUsername(rs.getString("username"));
+                user.setPassword(rs.getString("password"));
+                user.setUserType(rs.getString("user_type"));
+                user.setFullName(rs.getString("full_name"));
+                user.setMobile(rs.getString("mobile"));
+                user.setStatus(rs.getString("status"));
+
+                list.add(user);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
 }

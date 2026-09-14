@@ -444,34 +444,11 @@ List<VendorPayment> paymentList;
                     Vendor Company Name <span class="required">*</span>
                 </label>
 
-                <select name="vendorCompanyName"
-                        required>
-
-                    <option value="">
-                        Select Vendor
-                    </option>
-
-                    <option value="ABC Construction"
-                    <%= editPayment != null && "ABC Construction".equals(editPayment.getVendorCompanyName()) ? "selected" : "" %>>
-                    ABC Construction
-                    </option>
-
-                    <option value="Skyline Suppliers"
-                    <%= editPayment != null && "Skyline Suppliers".equals(editPayment.getVendorCompanyName()) ? "selected" : "" %>>
-                    Skyline Suppliers
-                    </option>
-
-                    <option value="Shree Enterprises"
-                    <%= editPayment != null && "Shree Enterprises".equals(editPayment.getVendorCompanyName()) ? "selected" : "" %>>
-                    Shree Enterprises
-                    </option>
-
-                    <option value="Om Services"
-                    <%= editPayment != null && "Om Services".equals(editPayment.getVendorCompanyName()) ? "selected" : "" %>>
-                    Om Services
-                    </option>
-
-                </select>
+                <input type="text"
+                       name="vendorCompanyName"
+                       value="<%= editPayment != null ? editPayment.getVendorCompanyName() : "" %>"
+                placeholder="Enter vendor company name"
+                required>
 
             </div>
 

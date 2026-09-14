@@ -3,6 +3,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.skyline.model.EmployeePayment" %>
 <%@ page import="com.skyline.dao.EmployeePaymentDAO" %>
+<%@ page import="com.skyline.model.User" %>
+<%@ page import="com.skyline.dao.UserDAO" %>
 
 <%
 if (!"Employee".equals(session.getAttribute("user_type"))) {
@@ -24,6 +26,8 @@ EmployeePayment editPayment = null;
 String editId = request.getParameter("editId");
 
 EmployeePaymentDAO dao = new EmployeePaymentDAO();
+UserDAO userDAO = new UserDAO();
+List<User> employees = userDAO.getActiveEmployees();
 
 if (editId != null && !editId.isEmpty()) {
 try {
@@ -453,25 +457,17 @@ List<EmployeePayment> paymentList;
                         Select Employee
                     </option>
 
-                    <option value="Anjali Sharma"
-                    <%= editPayment != null && "Anjali Sharma".equals(editPayment.getEmployeeName()) ? "selected" : "" %>>
-                    Anjali Sharma
+                    <% for (User employee : employees) { %>
+
+                    <option value="<%= employee.getFullName() %>"
+                    <%= editPayment != null
+                    && employee.getFullName().equals(editPayment.getEmployeeName())
+                    ? "selected"
+                    : "" %>>
+                    <%= employee.getFullName() %>
                     </option>
 
-                    <option value="Vikas Patil"
-                    <%= editPayment != null && "Vikas Patil".equals(editPayment.getEmployeeName()) ? "selected" : "" %>>
-                    Vikas Patil
-                    </option>
-
-                    <option value="Rahul Mehta"
-                    <%= editPayment != null && "Rahul Mehta".equals(editPayment.getEmployeeName()) ? "selected" : "" %>>
-                    Rahul Mehta
-                    </option>
-
-                    <option value="Neha Sharma"
-                    <%= editPayment != null && "Neha Sharma".equals(editPayment.getEmployeeName()) ? "selected" : "" %>>
-                    Neha Sharma
-                    </option>
+                    <% } %>
 
                 </select>
 

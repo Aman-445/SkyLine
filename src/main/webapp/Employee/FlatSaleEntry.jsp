@@ -767,28 +767,10 @@ List<FlatSale> allSaleList = dao.getAllFlatSales();
                                 Project Name
                             </label>
 
-                            <select name="buildingName">
-
-                                <option value="">
-                                    Select Project
-                                </option>
-
-                                <option value="Skyline Heights"
-                                <%= editSale != null && "Skyline Heights".equals(editSale.getBuildingName()) ? "selected" : "" %>>
-                                Skyline Heights
-                                </option>
-
-                                <option value="Green Valley"
-                                <%= editSale != null && "Green Valley".equals(editSale.getBuildingName()) ? "selected" : "" %>>
-                                Green Valley
-                                </option>
-
-                                <option value="Sunrise Residency"
-                                <%= editSale != null && "Sunrise Residency".equals(editSale.getBuildingName()) ? "selected" : "" %>>
-                                Sunrise Residency
-                                </option>
-
-                            </select>
+                            <input type="text"
+                                   name="buildingName"
+                                   value="<%= editSale != null && editSale.getBuildingName() != null ? editSale.getBuildingName() : "" %>"
+                            placeholder="Enter project name">
 
                         </div>
 
@@ -798,59 +780,11 @@ List<FlatSale> allSaleList = dao.getAllFlatSales();
                                 Flat No. <span class="required">*</span>
                             </label>
 
-                            <select name="faltNo"
-                                    required>
-
-                                <option value="">
-                                    Select Flat
-                                </option>
-
-                                <option value="A-101"
-                                <%= editSale != null && "A-101".equals(editSale.getFaltNo()) ? "selected" : "" %>>
-                                A-101
-                                </option>
-
-                                <option value="A-202"
-                                <%= editSale != null && "A-202".equals(editSale.getFaltNo()) ? "selected" : "" %>>
-                                A-202
-                                </option>
-
-                                <option value="A-303"
-                                <%= editSale != null && "A-303".equals(editSale.getFaltNo()) ? "selected" : "" %>>
-                                A-303
-                                </option>
-
-                                <option value="A-402"
-                                <%= editSale != null && "A-402".equals(editSale.getFaltNo()) ? "selected" : "" %>>
-                                A-402
-                                </option>
-
-                                <option value="B-204"
-                                <%= editSale != null && "B-204".equals(editSale.getFaltNo()) ? "selected" : "" %>>
-                                B-204
-                                </option>
-
-                                <option value="C-302"
-                                <%= editSale != null && "C-302".equals(editSale.getFaltNo()) ? "selected" : "" %>>
-                                C-302
-                                </option>
-
-                                <option value="D-103"
-                                <%= editSale != null && "D-103".equals(editSale.getFaltNo()) ? "selected" : "" %>>
-                                D-103
-                                </option>
-
-                                <option value="E-201"
-                                <%= editSale != null && "E-201".equals(editSale.getFaltNo()) ? "selected" : "" %>>
-                                E-201
-                                </option>
-
-                                <option value="F-104"
-                                <%= editSale != null && "F-104".equals(editSale.getFaltNo()) ? "selected" : "" %>>
-                                F-104
-                                </option>
-
-                            </select>
+                            <input type="text"
+                                   name="faltNo"
+                                   value="<%= editSale != null && editSale.getFaltNo() != null ? editSale.getFaltNo() : "" %>"
+                            placeholder="Enter flat number"
+                            required>
 
                         </div>
 
