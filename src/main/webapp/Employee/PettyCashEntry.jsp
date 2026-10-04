@@ -707,7 +707,7 @@ List<PettyCash> pettyCashList;
 
                     <tr>
 
-                        <th>#</th>
+                        <th>S No</th>
                         <th>Date</th>
                         <th>Voucher No.</th>
                         <th>Particulars</th>

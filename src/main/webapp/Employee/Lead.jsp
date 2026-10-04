@@ -965,7 +965,7 @@ List<User> employees = userDAO.getActiveEmployees();
 
                 <tr>
 
-                    <th>#</th>
+                    <th>S No</th>
                     <th>Lead ID</th>
                     <th>Customer Name</th>
                     <th>Mobile No.</th>

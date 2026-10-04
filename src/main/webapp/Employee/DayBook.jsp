@@ -232,9 +232,8 @@ List<DayBook> dayBookList;
             overflow: hidden;
         }
         .daybook-title {
-            background: #e9f3ff;
-            color: #164b8a;
-            font-size: 14px;
+            color: #24056f;
+            font-size: 20px;
             font-weight: 600;
             padding: 11px 14px;
             border-bottom: 1px solid #d5e5f5;
@@ -594,7 +593,7 @@ List<DayBook> dayBookList;
 
                 <thead>
                 <tr>
-                    <th>#</th>
+                    <th>S No</th>
                     <th>Date</th>
                     <th>Particulars</th>
                     <th>Transaction Type</th>

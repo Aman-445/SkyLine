@@ -11,7 +11,7 @@ return;
 String message = "";
 String messageType = "";
 
-if ("POST".equalsIgnoreCase(request.getMethod())) {
+if ("POST".equalsIgnoreCase(request.getMethod())) {     //it checks whether the form is submitted get for open page and post means submit the form
 String username = request.getParameter("username");
 String password = request.getParameter("password");
 String userType = request.getParameter("userType");
@@ -54,11 +54,11 @@ messageType = "error";
         border-radius: 8px;
         padding: 20px;
         box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-        max-width: 850px;
+        max-width: 90%;
     }
     .user-title {
         color: #4b2aa5;
-        font-size: 16px;
+        font-size: 20px;
         font-weight: 600;
         padding-bottom: 10px;
         border-bottom: 1px solid #cfc2e8;
@@ -66,7 +66,7 @@ messageType = "error";
     }
     .user-form-grid {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0,1fr));
+        grid-template-columns: repeat(2,1fr);
         gap: 18px 22px;
     }
     .user-form-group {
@@ -75,9 +75,9 @@ messageType = "error";
     }
     .user-form-group label {
         font-size: 12px;
-        color: #303044;
         margin-bottom: 7px;
     }
+
     .user-form-group input,
     .user-form-group select {
         width: 100%;
@@ -89,13 +89,17 @@ messageType = "error";
         font-size: 11px;
         outline: none;
     }
+
     .user-form-group input:focus,
     .user-form-group select:focus {
         border-color: #6337bd;
     }
+
     .required {
         color: #e63946;
+        font-size: 16px;
     }
+
     .user-save-btn {
         margin-top: 20px;
         border: none;
@@ -103,7 +107,7 @@ messageType = "error";
         color: #ffffff;
         padding: 9px 18px;
         border-radius: 5px;
-        font-size: 12px;
+        font-size: 14px;
         cursor: pointer;
     }
     .user-save-btn:hover {
@@ -113,7 +117,7 @@ messageType = "error";
         margin-bottom: 15px;
         padding: 9px 12px;
         border-radius: 5px;
-        font-size: 12px;
+        font-size: 14px;
     }
     .user-success {
         background: #e8f7ed;
@@ -123,19 +127,9 @@ messageType = "error";
         background: #fdeaea;
         color: #c82333;
     }
-    @media (max-width: 700px) {
-        .user-form-grid {
-            grid-template-columns: 1fr;
-        }
-    }
 </style>
 
-<div class="page-header">
-    <h2>Add User</h2>
-</div>
-
 <div class="user-card">
-
     <div class="user-title">
         Add User
     </div>
@@ -147,33 +141,20 @@ messageType = "error";
 <% } %>
 
 <form method="post" action="AddUser.jsp">
-
     <div class="user-form-grid">
 
         <div class="user-form-group">
-            <label>
-                Username <span class="required">*</span>
-            </label>
-            <input type="text"
-                   name="username"
-                   placeholder="Enter username"
-                   required>
+            <label>Username <span class="required">*</span></label>
+            <input type="text" name="username" placeholder="Enter username" required>
         </div>
 
         <div class="user-form-group">
-            <label>
-                Password <span class="required">*</span>
-            </label>
-            <input type="password"
-                   name="password"
-                   placeholder="Enter password"
-                   required>
+            <label>Password <span class="required">*</span></label>
+            <input type="password" name="password" placeholder="Enter password" required>
         </div>
 
         <div class="user-form-group">
-            <label>
-                User Type <span class="required">*</span>
-            </label>
+            <label>User Type <span class="required">*</span></label>
             <select name="userType" required>
                 <option value="">Select User Type</option>
                 <option value="Admin">Admin</option>
@@ -183,28 +164,17 @@ messageType = "error";
         </div>
 
         <div class="user-form-group">
-            <label>
-                Full Name <span class="required">*</span>
-            </label>
-            <input type="text"
-                   name="fullName"
-                   placeholder="Enter full name"
-                   required>
+            <label>Full Name <span class="required">*</span></label>
+            <input type="text" name="fullName" placeholder="Enter full name" required>
         </div>
 
         <div class="user-form-group">
-            <label>
-                Mobile
-            </label>
-            <input type="tel"
-                   name="mobile"
-                   placeholder="Enter mobile number">
+            <label>Mobile</label>
+            <input type="tel" name="mobile" placeholder="Enter mobile number">
         </div>
 
         <div class="user-form-group">
-            <label>
-                Status
-            </label>
+            <label>Status</label>
             <select name="status">
                 <option value="Active">Active</option>
                 <option value="Inactive">Inactive</option>
@@ -218,7 +188,6 @@ messageType = "error";
         <i class="fa fa-user-plus"></i>
         &nbsp; Add User
     </button>
-
 </form>
 
 </div>

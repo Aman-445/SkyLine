@@ -81,23 +81,16 @@ public class EmployeePaymentDAO {
                 payment.setPaymentMode(rs.getString("payment_mode"));
                 payment.setRemarks(rs.getString("remarks"));
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return payment;
     }
 
     public boolean updateEmployeePayment(EmployeePayment payment) {
 
-        String sql = "UPDATE employee_payments SET "
-                + "payment_date = ?, "
-                + "employee_name = ?, "
-                + "amount = ?, "
-                + "payment_mode = ?, "
-                + "remarks = ? "
-                + "WHERE id = ?";
+        String sql = "UPDATE employee_payments SET " + "payment_date = ?, " + "employee_name = ?, " + "amount = ?, "
+                + "payment_mode = ?, " + "remarks = ? " + "WHERE id = ?";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -110,11 +103,9 @@ public class EmployeePaymentDAO {
             ps.setInt(6, payment.getId());
 
             return ps.executeUpdate() > 0;
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return false;
     }
 
@@ -122,12 +113,8 @@ public class EmployeePaymentDAO {
 
         List<EmployeePayment> list = new ArrayList<>();
 
-        String sql = "SELECT * FROM employee_payments "
-                + "WHERE employee_name LIKE ? "
-                + "OR payment_mode LIKE ? "
-                + "OR remarks LIKE ? "
-                + "OR payment_date LIKE ? "
-                + "ORDER BY payment_date DESC";
+        String sql = "SELECT * FROM employee_payments " + "WHERE employee_name LIKE ? " + "OR payment_mode LIKE ? "
+                + "OR remarks LIKE ? " + "OR payment_date LIKE ? " + "ORDER BY payment_date DESC";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -142,7 +129,6 @@ public class EmployeePaymentDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-
                 EmployeePayment payment = new EmployeePayment();
 
                 payment.setId(rs.getInt("id"));
@@ -154,11 +140,9 @@ public class EmployeePaymentDAO {
 
                 list.add(payment);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return list;
     }
 

@@ -13,8 +13,6 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         body {
@@ -27,7 +25,6 @@
             background-size: cover;      /* Makes sure the image covers the whole screen */
             background-position: center; /* Centers the image */
             background-repeat: no-repeat;
-
         }
 
         .login-container {
@@ -38,10 +35,6 @@
             border-radius: 12px;
             text-align: center;
             opacity: 0.9;
-        }
-
-        .login-container img {
-            object-fit: contain;
         }
 
         .login-header h2 {
@@ -58,7 +51,6 @@
 
         .input-group {
             margin-bottom: 10px;
-            text-align: left;
         }
 
         .input-group label {
@@ -76,17 +68,13 @@
             border-radius: 8px;
             border: 2px solid #959090;
             transition: border-color 0.3s ease;
-            appearance: none;
-        }
-
-        .input-group input:focus {
-            border-color: blue;
+            appearance: none;               /* ye select use karte waqt jo dropdowm arrow show hota hai usko diappear karne ke liye*/
         }
 
         /* Password toggle icon */
         .toggle-password {
-            position: absolute;
-            right: 15px;
+            position: absolute;        /* ye element ko uske nearerest parent ke andar ek specific position par place kar dega */
+            right: 15px;               /* ye do lines position set kar rahi hai */
             top: 38px;
             color: #a0aec0;
             cursor: pointer;
@@ -107,7 +95,7 @@
         }
 
         .login-btn:hover {
-            background-color: darkblue;
+            background-color: #11288a;
         }
 
         .error-message {
@@ -115,7 +103,7 @@
             font-size: 13px;
             margin-top: -10px;
             margin-bottom: 15px;
-            display: none; /* Hidden by default */
+            display: none;                    /* Hidden by default */
         }
 
         .form-check input{
@@ -156,9 +144,9 @@
         %>
 
         <div class="input-group">
-            <label>User Type</label>
-            <!--            <input type="text" id="usertype" placeholder="choose your type" required>-->
-            <select name="user_type" required>
+            <label for="user_type">User Type</label>     <!--for in the label used to connect that label with specific input feild-->
+
+            <select id = "user_type" name="user_type" required>
                 <option value="Admin">Admin User</option>
                 <option value="Employee">Employee User</option>
                 <option value="Agent User">Agent User</option>
@@ -177,7 +165,7 @@
             <i class="fa fa-eye toggle-password" id="eyeIcon"></i>
         </div>
 
-        <div class="d-flex justify-content-between align-items-center mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">       <!--justify-content-between  items ko opposite ends par put karta hai-->
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="rememberMe" id="rememberMe">
                 <label class="form-check-label" for="rememberMe">
@@ -192,16 +180,16 @@
 </div>
 
 <script>
-    // 1. Password Visibility Toggle
+    // Password Visibility Toggle
     const passwordInput = document.getElementById('password');
     const eyeIcon = document.getElementById('eyeIcon');
 
     eyeIcon.addEventListener('click', function () {
-        // Toggle the type attribute
+        // Toggle the type attribute  Suppose initially: The password appears as: •••••••• When clicked: type = "text"
         const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
         passwordInput.setAttribute('type', type);
 
-        // Toggle the eye icon class
+        // change the eye icon
         this.classList.toggle('fa-eye');
         this.classList.toggle('fa-eye-slash');
     });

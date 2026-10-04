@@ -48,8 +48,8 @@ User user = dao.getUserByUsername(username);
         max-width: 700px;
     }
     .profile-title {
-        color: #4b2aa5;
-        font-size: 17px;
+        color: #24056f;
+        font-size: 20px;
         font-weight: 600;
         padding-bottom: 10px;
         border-bottom: 1px solid #d8cbed;

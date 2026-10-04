@@ -101,6 +101,7 @@ e.printStackTrace();
 
     <div class="daybook-detail-grid">
 
+
         <div class="daybook-detail">
             <label>Date</label>
             <span>

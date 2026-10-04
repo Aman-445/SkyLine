@@ -57,7 +57,6 @@ public class VendorPaymentDAO {
         }
     }
     public VendorPayment getVendorPaymentById(int id) {
-
         VendorPayment payment = null;
 
         String sql = "SELECT * FROM vendor_payments WHERE id = ?";
@@ -70,7 +69,6 @@ public class VendorPaymentDAO {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-
                 payment = new VendorPayment();
 
                 payment.setId(rs.getInt("id"));
@@ -80,24 +78,17 @@ public class VendorPaymentDAO {
                 payment.setPaymentMode(rs.getString("payment_mode"));
                 payment.setRemarks(rs.getString("remarks"));
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return payment;
     }
 
 
     public boolean updateVendorPayment(VendorPayment payment) {
 
-        String sql = "UPDATE vendor_payments SET "
-                + "payment_date = ?, "
-                + "vendor_company_name = ?, "
-                + "amount = ?, "
-                + "payment_mode = ?, "
-                + "remarks = ? "
-                + "WHERE id = ?";
+        String sql = "UPDATE vendor_payments SET " + "payment_date = ?, " + "vendor_company_name = ?, " + "amount = ?, "
+                + "payment_mode = ?, " + "remarks = ? " + "WHERE id = ?";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -118,15 +109,10 @@ public class VendorPaymentDAO {
     }
 
     public List<VendorPayment> searchVendorPayments(String search) {
-
         List<VendorPayment> list = new ArrayList<>();
 
-        String sql = "SELECT * FROM vendor_payments "
-                + "WHERE vendor_company_name LIKE ? "
-                + "OR payment_mode LIKE ? "
-                + "OR remarks LIKE ? "
-                + "OR payment_date LIKE ? "
-                + "ORDER BY payment_date DESC";
+        String sql = "SELECT * FROM vendor_payments " + "WHERE vendor_company_name LIKE ? " + "OR payment_mode LIKE ? "
+                + "OR remarks LIKE ? " + "OR payment_date LIKE ? " + "ORDER BY payment_date DESC";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -141,7 +127,6 @@ public class VendorPaymentDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-
                 VendorPayment payment = new VendorPayment();
 
                 payment.setId(rs.getInt("id"));
@@ -153,11 +138,9 @@ public class VendorPaymentDAO {
 
                 list.add(payment);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return list;
     }
 

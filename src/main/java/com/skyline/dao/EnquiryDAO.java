@@ -3,8 +3,7 @@ package com.skyline.dao;
 import com.skyline.model.Enquiry;
 import com.skyline.util.DBConnection;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class EnquiryDAO {
 
@@ -33,7 +32,6 @@ public class EnquiryDAO {
             ps.setString(12, enquiry.getEnquiryType());
 
             return ps.executeUpdate() > 0;
-
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -117,11 +115,9 @@ public class EnquiryDAO {
 
                 list.add(enquiry);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return list;
     }
 
@@ -186,7 +182,6 @@ public class EnquiryDAO {
             ps.setString(13, originalEnquiryNo);
 
             return ps.executeUpdate() > 0;
-
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -198,11 +193,9 @@ public class EnquiryDAO {
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-
             ps.setString(1, enquiryNo);
 
             return ps.executeUpdate() > 0;
-
         } catch (Exception e) {
             e.printStackTrace();
             return false;

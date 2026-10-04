@@ -23,14 +23,11 @@ List<User> userList = dao.getAllUsers();
             box-shadow: 0 2px 12px rgba(0,0,0,0.08);
         }
         .display-user-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             margin-bottom: 18px;
         }
         .display-user-title {
             color: #4b2aa5;
-            font-size: 16px;
+            font-size: 20px;
             font-weight: 600;
         }
         .user-table-wrapper {
@@ -49,7 +46,7 @@ List<User> userList = dao.getAllUsers();
             font-weight: 600;
             padding: 11px 8px;
             text-align: left;
-            white-space: nowrap;
+            white-space: nowrap;            /* prevents text from moving to the next line. */
         }
         .user-table td {
             padding: 12px 8px;
@@ -87,10 +84,6 @@ List<User> userList = dao.getAllUsers();
         }
     </style>
 
-    <div class="page-header">
-        <h2>Display User</h2>
-    </div>
-
     <div class="display-user-card">
 
         <div class="display-user-header">
@@ -105,7 +98,7 @@ List<User> userList = dao.getAllUsers();
 
                 <thead>
                 <tr>
-                    <th>#</th>
+                    <th>ID</th>
                     <th>Username</th>
                     <th>Full Name</th>
                     <th>Mobile</th>
@@ -115,51 +108,26 @@ List<User> userList = dao.getAllUsers();
                 </thead>
 
                 <tbody>
-
                 <%
                 int count = 1;
-
                 if (userList != null && !userList.isEmpty()) {
-
                 for (User user : userList) {
                 %>
-
                 <tr>
-
+                    <td><%= count %></td>
+                    <td><%= user.getUsername() %></td>
+                    <td><%= user.getFullName() %></td>
+                    <td><%= user.getMobile() == null ? "-" : user.getMobile() %></td>
+                    <td><%= user.getUserType() %></td>
                     <td>
-                        <%= count %>
-                    </td>
-
-                    <td>
-                        <%= user.getUsername() %>
-                    </td>
-
-                    <td>
-                        <%= user.getFullName() %>
-                    </td>
-
-                    <td>
-                        <%= user.getMobile() == null ? "-" : user.getMobile() %>
-                    </td>
-
-                    <td>
-                        <%= user.getUserType() %>
-                    </td>
-
-                    <td>
-
                         <%
                         if ("Active".equals(user.getStatus())) {
                         %>
-                        <span class="status-active">
-                            Active
-                        </span>
+                        <span class="status-active">Active</span>
                         <%
                         } else if ("Online".equals(user.getStatus())) {
                         %>
-                        <span class="status-online">
-                            Online
-                        </span>
+                        <span class="status-online">Online</span>
                         <%
                         } else {
                         %>
@@ -169,31 +137,22 @@ List<User> userList = dao.getAllUsers();
                         <%
                         }
                         %>
-
                     </td>
-
                 </tr>
-
                 <%
                 count++;
                 }
-
                 } else {
                 %>
-
                 <tr>
-                    <td colspan="6"
-                        style="text-align:center;padding:25px;color:#777777;">
+                    <td colspan="6" style="text-align:center;padding:25px;color:#777777;">
                         No users found.
                     </td>
                 </tr>
-
                 <%
                 }
                 %>
-
                 </tbody>
-
             </table>
 
         </div>

@@ -650,118 +650,71 @@ List<FollowUp> followUps;
 
         <div class="header-actions">
 
-            <form method="get"
-                  action="FollowUp.jsp"
-                  class="search-form">
+            <form method="get" action="FollowUp.jsp" class="search-form">
 
                 <div class="search-box">
-
                     <i class="fa fa-search"></i>
 
-                    <input type="text"
-                           name="search"
-                           value="<%= search %>"
-                           placeholder="Search enquiry...">
+                    <input type="text" name="search" value="<%= search %>" placeholder="Search enquiry...">
 
-                    <button type="submit"
-                            title="Search">
-                    </button>
-
+                    <button type="submit" title="Search"></button>
                 </div>
 
             </form>
 
-            <button type="button"
-                    class="add-btn"
+            <button type="button" class="add-btn"
                     onclick="document.getElementById('addFollowUpBox').style.display='block';">
-
                 <i class="fa fa-plus"></i>
                 &nbsp; Add Follow Up
-
             </button>
 
         </div>
-
     </div>
 
     <% if (errorMessage != null && !errorMessage.isEmpty()) { %>
-
     <div class="message">
         <%= errorMessage %>
     </div>
-
     <% } %>
 
-    <div id="addFollowUpBox"
-         class="add-followup-box"
-         style="<%= editFollowUp != null ? "display:block;" : "display:none;" %>">
+    <div id="addFollowUpBox" class="add-followup-box" style="<%= editFollowUp != null ? "display:block;" : "display:none;" %>">
 
     <div class="add-followup-title">
-
-        <%= editFollowUp != null
-        ? "Edit Follow Up"
-        : "Add Follow Up" %>
-
+        <%= editFollowUp != null ? "Edit Follow Up" : "Add Follow Up" %>
     </div>
 
-    <form method="post"
-          action="FollowUp.jsp">
+    <form method="post" action="FollowUp.jsp">
 
-        <input type="hidden"
-               name="action"
-               value="<%= editFollowUp != null
-                       ? "update"
-        : "add" %>">
+        <input type="hidden" name="action" value="<%= editFollowUp != null  ? "update" : "add" %>">
 
         <% if (editFollowUp != null) { %>
-
-        <input type="hidden"
-               name="id"
-               value="<%= editFollowUp.getId() %>">
-
+        <input type="hidden" name="id" value="<%= editFollowUp.getId() %>">
         <% } %>
 
         <div class="form-grid">
-
             <div class="form-group">
-
                 <label>Enquiry ID</label>
 
-                <input type="text"
-                       name="enquiryId"
-                       value="<%= editFollowUp != null
-                               ? editFollowUp.getEnquiryId()
-                               : "" %>"
-                placeholder="Enter enquiry ID"
-                required>
-
+                <input type="text" name="enquiryId"
+                       value="<%= editFollowUp != null ? editFollowUp.getEnquiryId() : "" %>"
+                placeholder="Enter enquiry ID" required>
             </div>
 
             <div class="form-group">
-
                 <label>Customer Name</label>
 
-                <input type="text"
-                       name="customerName"
-                       value="<%= editFollowUp != null
-                               ? editFollowUp.getCustomerName()
-                               : "" %>"
-                placeholder="Enter customer name"
-                required>
-
+                <input type="text" name="customerName"
+                       value="<%= editFollowUp != null  ? editFollowUp.getCustomerName() : "" %>"
+                placeholder="Enter customer name" required>
             </div>
 
             <div class="form-group">
 
                 <label>Mobile No.</label>
 
-                <input type="text"
-                       name="mobileNo"
-                       value="<%= editFollowUp != null
-                               ? editFollowUp.getMobileNo()
-                               : "" %>"
-                placeholder="Enter mobile number"
-                required>
+                <input type="text" name="mobileNo"
+                       value="<%= editFollowUp != null   ? editFollowUp.getMobileNo()  : "" %>"
+                placeholder="Enter mobile number" required>
 
             </div>
 
@@ -769,110 +722,80 @@ List<FollowUp> followUps;
 
                 <label>Follow Up Type</label>
 
-                <select name="followUpType"
-                        required>
+                <select name="followUpType" required>
 
                     <option value="">
                         Select Type
                     </option>
 
                     <option value="Call"
-                    <%= editFollowUp != null
-                    && "Call".equals(
-                    editFollowUp.getFollowUpType())
-                    ? "selected"
-                    : "" %>>
+                    <%= editFollowUp != null && "Call".equals(
+                    editFollowUp.getFollowUpType()) ? "selected" : "" %>>
                     Call
                     </option>
 
                     <option value="Visit"
-                    <%= editFollowUp != null
-                    && "Visit".equals(
-                    editFollowUp.getFollowUpType())
-                    ? "selected"
-                    : "" %>>
+                    <%= editFollowUp != null && "Visit".equals(
+                    editFollowUp.getFollowUpType()) ? "selected" : "" %>>
                     Visit
                     </option>
 
                     <option value="Email"
-                    <%= editFollowUp != null
-                    && "Email".equals(
-                    editFollowUp.getFollowUpType())
-                    ? "selected"
-                    : "" %>>
+                    <%= editFollowUp != null && "Email".equals(
+                    editFollowUp.getFollowUpType()) ? "selected" : "" %>>
                     Email
                     </option>
 
                 </select>
-
             </div>
 
             <div class="form-group">
 
                 <label>Follow Up Date</label>
 
-                <input type="date"
-                       name="followUpDate"
-                       value="<%= editFollowUp != null
-                               && editFollowUp.getFollowUpDate() != null
-                               ? editFollowUp.getFollowUpDate()
-                               : "" %>"
-                required>
-
+                <input type="date" name="followUpDate"
+                       value="<%= editFollowUp != null && editFollowUp.getFollowUpDate() != null
+                               ? editFollowUp.getFollowUpDate(): "" %>" required>
             </div>
 
             <div class="form-group">
 
                 <label>Status</label>
 
-                <select name="status"
-                        required>
+                <select name="status" required>
 
                     <option value="">
                         Select Status
                     </option>
 
                     <option value="pending"
-                    <%= editFollowUp != null
-                    && "pending".equalsIgnoreCase(
-                    editFollowUp.getStatus())
-                    ? "selected"
-                    : "" %>>
+                    <%= editFollowUp != null && "pending".equalsIgnoreCase(
+                    editFollowUp.getStatus()) ? "selected" : "" %>>
                     Pending
                     </option>
 
                     <option value="completed"
-                    <%= editFollowUp != null
-                    && "completed".equalsIgnoreCase(
-                    editFollowUp.getStatus())
-                    ? "selected"
-                    : "" %>>
+                    <%= editFollowUp != null && "completed".equalsIgnoreCase(
+                    editFollowUp.getStatus()) ? "selected" : "" %>>
                     Completed
                     </option>
 
                     <option value="in progress"
-                    <%= editFollowUp != null
-                    && "in progress".equalsIgnoreCase(
-                    editFollowUp.getStatus())
-                    ? "selected"
-                    : "" %>>
+                    <%= editFollowUp != null && "in progress".equalsIgnoreCase(
+                    editFollowUp.getStatus()) ? "selected" : "" %>>
                     In Progress
                     </option>
 
                 </select>
-
             </div>
 
             <div class="form-group">
 
                 <label>Next Follow Up</label>
 
-                <input type="date"
-                       name="nextFollowUp"
-                       value="<%= editFollowUp != null
-                               && editFollowUp.getNextFollowUp() != null
-                               ? editFollowUp.getNextFollowUp()
-                               : "" %>">
+                <input type="date" name="nextFollowUp"
+                       value="<%= editFollowUp != null  && editFollowUp.getNextFollowUp() != null
+                               ? editFollowUp.getNextFollowUp() : "" %>">
 
             </div>
 
@@ -880,38 +803,23 @@ List<FollowUp> followUps;
 
         <div class="form-buttons">
 
-            <button type="submit"
-                    class="add-btn">
-
+            <button type="submit" class="add-btn">
                 <i class="fa fa-save"></i>
-
                 &nbsp;
-
-                <%= editFollowUp != null
-                ? "Update Follow Up"
-                : "Save Follow Up" %>
-
+                <%= editFollowUp != null ? "Update Follow Up" : "Save Follow Up" %>
             </button>
 
-            <button type="button"
-                    class="cancel-btn"
-                    onclick="window.location.href='FollowUp.jsp';">
-
+            <button type="button" class="cancel-btn" onclick="window.location.href='FollowUp.jsp';">
                 Cancel
-
             </button>
 
         </div>
-
     </form>
 
     </div>
-
     <div class="filter-card">
 
-        <form method="get"
-              action="FollowUp.jsp">
-
+        <form method="get" action="FollowUp.jsp">
             <div class="filter-grid">
 
                 <div class="filter-group">
@@ -921,35 +829,26 @@ List<FollowUp> followUps;
                     <select name="status">
 
                         <option value="All"
-                        <%= "All".equals(status)
-                        ? "selected"
-                        : "" %>>
+                        <%= "All".equals(status) ? "selected" : "" %>>
                         All
                         </option>
 
                         <option value="pending"
-                        <%= "pending".equals(status)
-                        ? "selected"
-                        : "" %>>
+                        <%= "pending".equals(status) ? "selected" : "" %>>
                         Pending
                         </option>
 
                         <option value="completed"
-                        <%= "completed".equals(status)
-                        ? "selected"
-                        : "" %>>
+                        <%= "completed".equals(status) ? "selected" : "" %>>
                         Completed
                         </option>
 
                         <option value="in progress"
-                        <%= "in progress".equals(status)
-                        ? "selected"
-                        : "" %>>
+                        <%= "in progress".equals(status) ? "selected" : "" %>>
                         In Progress
                         </option>
 
                     </select>
-
                 </div>
 
                 <div class="filter-group">
@@ -959,30 +858,22 @@ List<FollowUp> followUps;
                     <select name="followUpType">
 
                         <option value="All"
-                        <%= "All".equals(followUpType)
-                        ? "selected"
-                        : "" %>>
+                        <%= "All".equals(followUpType) ? "selected" : "" %>>
                         All
                         </option>
 
                         <option value="Call"
-                        <%= "Call".equals(followUpType)
-                        ? "selected"
-                        : "" %>>
+                        <%= "Call".equals(followUpType) ? "selected" : "" %>>
                         Call
                         </option>
 
                         <option value="Visit"
-                        <%= "Visit".equals(followUpType)
-                        ? "selected"
-                        : "" %>>
+                        <%= "Visit".equals(followUpType) ? "selected" : "" %>>
                         Visit
                         </option>
 
                         <option value="Email"
-                        <%= "Email".equals(followUpType)
-                        ? "selected"
-                        : "" %>>
+                        <%= "Email".equals(followUpType) ? "selected" : "" %>>
                         Email
                         </option>
 
@@ -994,38 +885,26 @@ List<FollowUp> followUps;
 
                     <label>From Date</label>
 
-                    <input type="date"
-                           name="fromDate"
-                           value="<%= fromDate %>">
+                    <input type="date" name="fromDate" value="<%= fromDate %>">
 
                 </div>
 
                 <div class="filter-group">
-
                     <label>To Date</label>
 
-                    <input type="date"
-                           name="toDate"
-                           value="<%= toDate %>">
-
+                    <input type="date" name="toDate" value="<%= toDate %>">
                 </div>
 
                 <div class="filter-group">
 
-                    <button type="submit"
-                            class="filter-btn">
-
+                    <button type="submit" class="filter-btn">
                         <i class="fa fa-filter"></i>
                         &nbsp; Filter
-
                     </button>
 
                 </div>
-
             </div>
-
         </form>
-
     </div>
 
     <div class="list-card">
@@ -1041,12 +920,11 @@ List<FollowUp> followUps;
         <div class="table-container">
 
             <table class="followup-table">
-
                 <thead>
 
                 <tr>
 
-                    <th>#</th>
+                    <th>S No</th>
                     <th>Enquiry ID</th>
                     <th>Customer Name</th>
                     <th>Mobile No.</th>
@@ -1061,7 +939,6 @@ List<FollowUp> followUps;
                 </thead>
 
                 <tbody>
-
                 <%
                 int count = 1;
 
@@ -1099,124 +976,71 @@ List<FollowUp> followUps;
                 %>
 
                 <tr>
-
-                    <td>
-                        <%= count %>
-                    </td>
-
-                    <td>
-                        <%= followUp.getEnquiryId() %>
-                    </td>
-
-                    <td>
-                        <%= followUp.getCustomerName() %>
-                    </td>
-
-                    <td>
-                        <%= followUp.getMobileNo() %>
-                    </td>
-
-                    <td>
-                        <%= followUp.getFollowUpType() %>
-                    </td>
-
-                    <td>
-                        <%= followUp.getFollowUpDate() %>
-                    </td>
-
+                    <td><%= count %></td>
+                    <td><%= followUp.getEnquiryId() %></td>
+                    <td><%= followUp.getCustomerName() %></td>
+                    <td><%= followUp.getMobileNo() %></td>
+                    <td><%= followUp.getFollowUpType() %></td>
+                    <td><%= followUp.getFollowUpDate() %></td>
                     <td>
 
                     <span class="status <%= statusClass %>">
-
                         <%= followUp.getStatus() %>
-
                     </span>
 
                     </td>
 
                     <td>
-
                         <% if (followUp.getNextFollowUp() != null) { %>
-
                         <%= followUp.getNextFollowUp() %>
-
                         <% } else { %>
-
                         -
-
                         <% } %>
 
                     </td>
 
                     <td>
-
                         <div class="action-buttons">
 
-                            <a href="FollowUp.jsp?editId=<%= followUp.getId() %>"
-                               class="edit-btn"
-                               title="Edit">
-
+                            <a href="FollowUp.jsp?editId=<%= followUp.getId() %>" class="edit-btn" title="Edit">
                                 <i class="fa fa-pen"></i>
-
                             </a>
 
-                            <form method="post"
-                                  action="FollowUp.jsp"
-                                  style="display:inline;"
+                            <form method="post" action="FollowUp.jsp" style="display:inline;"
                                   onsubmit="return confirm('Are you sure you want to delete this follow up?');">
 
-                                <input type="hidden"
-                                       name="action"
-                                       value="delete">
+                                <input type="hidden" name="action" value="delete">
 
-                                <input type="hidden"
-                                       name="deleteId"
-                                       value="<%= followUp.getId() %>">
+                                <input type="hidden" name="deleteId" value="<%= followUp.getId() %>">
 
-                                <button type="submit"
-                                        class="delete-btn"
-                                        title="Delete">
-
+                                <button type="submit" class="delete-btn" title="Delete">
                                     <i class="fa fa-trash"></i>
-
                                 </button>
 
                             </form>
-
                         </div>
-
                     </td>
 
                 </tr>
-
                 <%
                 count++;
                 }
-
                 } else {
                 %>
 
                 <tr>
 
-                    <td colspan="9"
-                        style="text-align:center;
-                           padding:25px;
-                           color:#777;">
-
+                    <td colspan="9" style="text-align:center;  padding:25px; color:#777;">
                         No follow up records found.
-
                     </td>
 
                 </tr>
-
                 <%
                 }
                 %>
 
                 </tbody>
-
             </table>
-
         </div>
 
         <div class="table-footer">
@@ -1230,31 +1054,20 @@ List<FollowUp> followUps;
 
             <div class="pagination">
 
-                <button type="button"
-                        class="page-btn">
-
+                <button type="button" class="page-btn">
                     <i class="fa fa-chevron-left"></i>
-
                 </button>
 
-                <button type="button"
-                        class="page-btn active">
-
+                <button type="button" class="page-btn active">
                     1
-
                 </button>
 
-                <button type="button"
-                        class="page-btn">
-
+                <button type="button" class="page-btn">
                     <i class="fa fa-chevron-right"></i>
-
                 </button>
 
             </div>
-
         </div>
-
     </div>
 
     </div>

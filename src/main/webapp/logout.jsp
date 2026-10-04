@@ -16,17 +16,14 @@ return;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logout</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
         body {
             min-height: 100vh;
             margin: 0;
-            background: linear-gradient(90deg,rgba(71, 166, 204, 0.78) 0%, rgba(144, 199, 209, 1) 53%,
-                                       rgba(124, 159, 242, 0.83) 100%);
+            background: linear-gradient(90deg,rgba(71, 166, 204, 0.78) 0%, rgba(144, 199, 209, 1) 53%,rgba(124, 159, 242, 0.83) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -54,7 +51,6 @@ return;
 
         .logout-card {
             background: #8ac1ea;
-            padding: 42px 40px;
             text-align: center;
         }
 
@@ -92,7 +88,6 @@ return;
         .logout-question {
             color: #142d50;
             font-size: 18px;
-            font-weight: 600;
             margin-bottom: 8px;
         }
 
@@ -108,8 +103,7 @@ return;
             gap: 18px;
         }
 
-        .cancel-btn,
-        .logout-btn {
+        .cancel-btn, .logout-btn {
             min-width: 160px;
             padding: 11px 18px;
             border-radius: 6px;
@@ -139,23 +133,18 @@ return;
             color: #ffffff;
         }
 
-
         @media (max-width: 576px) {
             .logout-card {
                 padding: 35px 20px;
             }
-
             .logout-title {
                 font-size: 30px;
             }
-
             .button-group {
                 flex-direction: column;
                 gap: 10px;
             }
-
-            .cancel-btn,
-            .logout-btn {
+            .cancel-btn, .logout-btn {
                 width: 100%;
             }
         }
@@ -163,7 +152,6 @@ return;
 </head>
 
 <body>
-
 <div class="logout-wrapper">
 
     <div class="logo">
@@ -187,28 +175,23 @@ return;
         </div>
 
         <div class="logout-text">
-            You will be logged out of Skyline CRM.
+            You will be logged out from Skyline CRM.
         </div>
 
         <div class="button-group">
 
-            <button type="button"
-                    class="btn cancel-btn"
-                    onclick="history.back();">
+            <button type="button" class="btn cancel-btn" onclick="history.back();">
                 <i class="fa-solid fa-xmark"></i>
                 &nbsp; Cancel
             </button>
 
-            <a href="logout.jsp?action=logout"
-               class="btn logout-btn">
+            <a href="logout.jsp?action=logout" class="btn logout-btn">
                 <i class="fa-solid fa-power-off"></i>
                 &nbsp; Yes, Logout
             </a>
 
         </div>
-
     </div>
-
 </div>
 
 </body>

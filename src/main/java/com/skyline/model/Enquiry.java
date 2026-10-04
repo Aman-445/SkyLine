@@ -20,10 +20,9 @@ public class Enquiry {
     public Enquiry() {
     }
 
-    public Enquiry(String enquiryNo, Date enquiryDate, String customerName,
-                   String mobile, String preferredLocation, String noOfBedrooms,
-                   String buildingName, double budget, String purpose,
-                   String flatType, String source, String enquiryType) {
+    public Enquiry(String enquiryNo, Date enquiryDate, String customerName, String mobile, String preferredLocation,
+                   String noOfBedrooms, String buildingName, double budget, String purpose, String flatType,
+                   String source, String enquiryType) {
 
         this.enquiryNo = enquiryNo;
         this.enquiryDate = enquiryDate;

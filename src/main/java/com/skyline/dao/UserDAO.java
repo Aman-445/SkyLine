@@ -39,7 +39,6 @@ public class UserDAO {
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
-
             while (rs.next()) {
                 User user = new User();
 
@@ -53,14 +52,14 @@ public class UserDAO {
 
                 list.add(user);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return list;
     }
 
+
+//    it is for udate user page
     public User getUserById(int id) {
         User user = null;
 

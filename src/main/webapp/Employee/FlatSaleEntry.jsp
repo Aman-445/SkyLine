@@ -1067,7 +1067,7 @@ List<FlatSale> allSaleList = dao.getAllFlatSales();
 
                         <tr>
 
-                            <th>#</th>
+                            <th>S No</th>
                             <th>Date</th>
                             <th>Customer Name</th>
                             <th>Project Name</th>

@@ -20,9 +20,7 @@ search = "";
 }
 
 VendorPayment editPayment = null;
-
 String editId = request.getParameter("editId");
-
 VendorPaymentDAO dao = new VendorPaymentDAO();
 
 if (editId != null && !editId.isEmpty()) {
@@ -34,14 +32,11 @@ e.printStackTrace();
 }
 
 if ("POST".equalsIgnoreCase(request.getMethod())) {
-
 String action = request.getParameter("action");
-
 if ("delete".equals(action)) {
 
 try {
 int id = Integer.parseInt(request.getParameter("id"));
-
 if (dao.deleteVendorPayment(id)) {
 response.sendRedirect("VendorPayment.jsp");
 return;
@@ -66,11 +61,8 @@ String paymentMode = request.getParameter("paymentMode");
 String remarks = request.getParameter("remarks");
 
 try {
-
 double amount = Double.parseDouble(amountText);
-
 VendorPayment payment = new VendorPayment();
-
 if ("update".equals(action)) {
 payment.setId(Integer.parseInt(request.getParameter("id")));
 }
@@ -82,7 +74,6 @@ payment.setPaymentMode(paymentMode);
 payment.setRemarks(remarks);
 
 if ("save".equals(action)) {
-
 if (dao.addVendorPayment(payment)) {
 response.sendRedirect("VendorPayment.jsp");
 return;
@@ -92,7 +83,6 @@ messageType = "error";
 }
 
 } else {
-
 if (dao.updateVendorPayment(payment)) {
 response.sendRedirect("VendorPayment.jsp");
 return;
@@ -111,7 +101,6 @@ messageType = "error";
 }
 
 List<VendorPayment> paymentList;
-
     if (!search.trim().isEmpty()) {
     paymentList = dao.searchVendorPayments(search.trim());
     } else {
@@ -120,7 +109,6 @@ List<VendorPayment> paymentList;
     %>
 
     <%@ include file="../Common.jsp" %>
-
     <style>
         .payment-card {
             background: #ffffff;
@@ -133,7 +121,7 @@ List<VendorPayment> paymentList;
 
         .card-title {
             color: #24056f;
-            font-size: 15px;
+            font-size: 20px;
             font-weight: 600;
             padding-bottom: 10px;
             border-bottom: 1px solid #cfc3e8;
@@ -156,9 +144,7 @@ List<VendorPayment> paymentList;
             color: #e63946;
         }
 
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             box-sizing: border-box;
             border: 1px solid #dddddd;
@@ -170,8 +156,7 @@ List<VendorPayment> paymentList;
             background: #ffffff;
         }
 
-        .form-group input,
-        .form-group select {
+        .form-group input, .form-group select {
             height: 34px;
         }
 
@@ -180,9 +165,7 @@ List<VendorPayment> paymentList;
             resize: none;
         }
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             border-color: #6337bd;
         }
 
@@ -193,8 +176,7 @@ List<VendorPayment> paymentList;
             margin-top: 20px;
         }
 
-        .save-btn,
-        .reset-btn {
+        .save-btn, .reset-btn {
             border-radius: 5px;
             padding: 8px 16px;
             font-size: 11px;
@@ -284,8 +266,7 @@ List<VendorPayment> paymentList;
             gap: 6px;
         }
 
-        .edit-btn,
-        .delete-btn {
+        .edit-btn, .delete-btn {
             width: 27px;
             height: 27px;
             border: none;
@@ -386,22 +367,13 @@ List<VendorPayment> paymentList;
     <% } %>
 
     <div class="page-header">
-
         <h2>Vendor Payment</h2>
 
-        <form method="get"
-              action="VendorPayment.jsp"
-              class="search-box">
-
+        <form method="get" action="VendorPayment.jsp" class="search-box">
             <i class="fa fa-search"></i>
 
-            <input type="text"
-                   name="search"
-                   value="<%= search %>"
-                   placeholder="Search vendor payment...">
-
+            <input type="text" name="search" value="<%= search %>" placeholder="Search vendor payment...">
         </form>
-
     </div>
 
     <div class="payment-card">
@@ -410,73 +382,49 @@ List<VendorPayment> paymentList;
             <%= editPayment == null ? "Vendor Payment" : "Edit Vendor Payment" %>
         </div>
 
-        <form method="post"
-              action="VendorPayment.jsp">
+        <form method="post" action="VendorPayment.jsp">
 
-            <input type="hidden"
-                   name="action"
-                   value="<%= editPayment == null ? "save" : "update" %>">
+            <input type="hidden" name="action" value="<%= editPayment == null ? "save" : "update" %>">
 
             <% if (editPayment != null) { %>
-
-            <input type="hidden"
-                   name="id"
-                   value="<%= editPayment.getId() %>">
-
+            <input type="hidden" name="id" value="<%= editPayment.getId() %>">
             <% } %>
 
             <div class="form-group">
-
                 <label>
                     Date <span class="required">*</span>
                 </label>
 
-                <input type="date"
-                       name="paymentDate"
-                       value="<%= editPayment != null ? editPayment.getPaymentDate() : "" %>"
-                required>
-
+                <input type="date" name="paymentDate" value="<%= editPayment != null ? editPayment.getPaymentDate() : "" %>" required>
             </div>
 
             <div class="form-group">
-
                 <label>
                     Vendor Company Name <span class="required">*</span>
                 </label>
 
-                <input type="text"
-                       name="vendorCompanyName"
-                       value="<%= editPayment != null ? editPayment.getVendorCompanyName() : "" %>"
-                placeholder="Enter vendor company name"
-                required>
-
+                <input type="text" name="vendorCompanyName" value="<%= editPayment != null ? editPayment.getVendorCompanyName() : "" %>"
+                placeholder="Enter vendor company name" required>
             </div>
 
             <div class="form-group">
-
                 <label>
                     Amount (<i class="fa-solid fa-indian-rupee-sign"></i>)
                     <span class="required">*</span>
                 </label>
 
-                <input type="number"
-                       name="amount"
-                       value="<%= editPayment != null ? editPayment.getAmount() : "" %>"
+                <input type="number" name="amount" value="<%= editPayment != null ? editPayment.getAmount() : "" %>"
                 placeholder="Enter amount"
                 step="0.01"
-                min="0"
-                required>
-
+                min="0" required>
             </div>
 
             <div class="form-group">
-
                 <label>
                     Payment Mode <span class="required">*</span>
                 </label>
 
-                <select name="paymentMode"
-                        required>
+                <select name="paymentMode" required>
 
                     <option value="">
                         Select Mode
@@ -514,46 +462,31 @@ List<VendorPayment> paymentList;
 
                 <textarea name="remarks"
                           placeholder="Enter remarks (optional)"><%= editPayment != null && editPayment.getRemarks() != null ? editPayment.getRemarks() : "" %></textarea>
-
             </div>
 
             <div class="form-buttons">
 
-                <button type="submit"
-                        class="save-btn">
-
+                <button type="submit" class="save-btn">
                     <i class="fa fa-save"></i>
                     &nbsp;
                     <%= editPayment == null ? "Save Payment" : "Update Payment" %>
-
                 </button>
 
                 <% if (editPayment != null) { %>
-
-                <a href="VendorPayment.jsp"
-                   class="reset-btn">
-
+                <a href="VendorPayment.jsp" class="reset-btn">
                     <i class="fa fa-rotate-left"></i>
                     &nbsp; Cancel
-
                 </a>
-
                 <% } else { %>
 
-                <button type="reset"
-                        class="reset-btn">
-
+                <button type="reset" class="reset-btn">
                     <i class="fa fa-rotate-left"></i>
                     &nbsp; Reset
-
                 </button>
-
                 <% } %>
 
             </div>
-
         </form>
-
     </div>
 
     <div class="list-card">
@@ -563,13 +496,11 @@ List<VendorPayment> paymentList;
         </div>
 
         <div class="table-container">
-
             <table class="payment-table">
-
                 <thead>
 
                 <tr>
-                    <th>#</th>
+                    <th>S No</th>
                     <th>Date</th>
                     <th>Vendor Company Name</th>
                     <th>Amount (<i class="fa-solid fa-indian-rupee-sign"></i>)</th>
@@ -581,110 +512,59 @@ List<VendorPayment> paymentList;
                 </thead>
 
                 <tbody>
-
                 <%
                 int count = 1;
-
-                if (paymentList != null && !paymentList.isEmpty()) {
-
+                if(paymentList != null && !paymentList.isEmpty()) {
                 for (VendorPayment payment : paymentList) {
                 %>
 
                 <tr>
-
+                    <td><%= count %></td>
+                    <td><%= payment.getPaymentDate() %></td>
+                    <td><%= payment.getVendorCompanyName() %></td>
+                    <td><%= String.format("%.2f", payment.getAmount()) %></td>
+                    <td><%= payment.getPaymentMode() %></td>
                     <td>
-                        <%= count %>
+                        <%= payment.getRemarks() == null || payment.getRemarks().isEmpty() ? "-" : payment.getRemarks() %>
                     </td>
-
                     <td>
-                        <%= payment.getPaymentDate() %>
-                    </td>
-
-                    <td>
-                        <%= payment.getVendorCompanyName() %>
-                    </td>
-
-                    <td>
-                        <%= String.format("%.2f", payment.getAmount()) %>
-                    </td>
-
-                    <td>
-                        <%= payment.getPaymentMode() %>
-                    </td>
-
-                    <td>
-                        <%= payment.getRemarks() == null || payment.getRemarks().isEmpty()
-                        ? "-"
-                        : payment.getRemarks() %>
-                    </td>
-
-                    <td>
-
                         <div class="action-buttons">
 
-                            <a href="VendorPayment.jsp?editId=<%= payment.getId() %>"
-                               class="edit-btn"
-                               title="Edit">
-
+                            <a href="VendorPayment.jsp?editId=<%= payment.getId() %>" class="edit-btn" title="Edit">
                                 <i class="fa fa-pen"></i>
-
                             </a>
 
-                            <form method="post"
-                                  action="VendorPayment.jsp"
-                                  style="display:inline;"
+                            <form method="post" action="VendorPayment.jsp" style="display:inline;"
                                   onsubmit="return confirm('Are you sure you want to delete this payment?');">
 
-                                <input type="hidden"
-                                       name="action"
-                                       value="delete">
+                                <input type="hidden" name="action" value="delete">
 
-                                <input type="hidden"
-                                       name="id"
-                                       value="<%= payment.getId() %>">
+                                <input type="hidden" name="id" value="<%= payment.getId() %>">
 
-                                <button type="submit"
-                                        class="delete-btn"
-                                        title="Delete">
-
+                                <button type="submit" class="delete-btn" title="Delete">
                                     <i class="fa fa-trash"></i>
-
                                 </button>
 
                             </form>
-
                         </div>
-
                     </td>
-
                 </tr>
-
                 <%
                 count++;
                 }
-
                 } else {
                 %>
 
                 <tr>
-
-                    <td colspan="7"
-                        style="text-align:center;padding:25px;color:#777777;">
-
+                    <td colspan="7" style="text-align:center;padding:25px;color:#777777;">
                         No vendor payment entries found.
-
                     </td>
-
                 </tr>
-
                 <%
                 }
                 %>
-
                 </tbody>
-
             </table>
-
         </div>
 
         <div class="table-footer">
@@ -696,31 +576,20 @@ List<VendorPayment> paymentList;
 
             <div class="pagination">
 
-                <button type="button"
-                        class="page-btn">
-
+                <button type="button" class="page-btn">
                     <i class="fa fa-chevron-left"></i>
-
                 </button>
 
-                <button type="button"
-                        class="page-btn active">
-
+                <button type="button" class="page-btn active">
                     1
-
                 </button>
 
-                <button type="button"
-                        class="page-btn">
-
+                <button type="button" class="page-btn">
                     <i class="fa fa-chevron-right"></i>
-
                 </button>
 
             </div>
-
         </div>
-
     </div>
 
     </div>

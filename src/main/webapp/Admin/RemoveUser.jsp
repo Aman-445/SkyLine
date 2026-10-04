@@ -50,7 +50,7 @@ List<User> userList = dao.getAllUsers();
         }
         .remove-user-title {
             color: #4b2aa5;
-            font-size: 16px;
+            font-size: 20px;
             font-weight: 600;
             padding-bottom: 10px;
             border-bottom: 1px solid #cfc2e8;
@@ -111,16 +111,10 @@ List<User> userList = dao.getAllUsers();
         }
     </style>
 
-    <div class="page-header">
-        <h2>Remove User</h2>
-    </div>
-
     <div class="remove-user-card">
-
         <div class="remove-user-title">
             Remove User
         </div>
-
         <% if (!message.isEmpty()) { %>
         <div class="remove-message <%= messageType.equals("success") ? "remove-success" : "remove-error" %>">
         <%= message %>
@@ -133,7 +127,7 @@ List<User> userList = dao.getAllUsers();
 
             <thead>
             <tr>
-                <th>#</th>
+                <th>ID</th>
                 <th>Username</th>
                 <th>Full Name</th>
                 <th>User Type</th>
@@ -144,88 +138,50 @@ List<User> userList = dao.getAllUsers();
             </thead>
 
             <tbody>
-
             <%
             int count = 1;
-
             if (userList != null && !userList.isEmpty()) {
-
             for (User user : userList) {
             %>
 
             <tr>
-
+                <td><%= count %></td>
+                <td><%= user.getUsername() %></td>
+                <td><%= user.getFullName() %></td>
+                <td><%= user.getUserType() %></td>
+                <td><%= user.getMobile() == null ? "-" : user.getMobile() %></td>
+                <td><%= user.getStatus() %></td>
                 <td>
-                    <%= count %>
-                </td>
-
-                <td>
-                    <%= user.getUsername() %>
-                </td>
-
-                <td>
-                    <%= user.getFullName() %>
-                </td>
-
-                <td>
-                    <%= user.getUserType() %>
-                </td>
-
-                <td>
-                    <%= user.getMobile() == null ? "-" : user.getMobile() %>
-                </td>
-
-                <td>
-                    <%= user.getStatus() %>
-                </td>
-
-                <td>
-
-                    <form method="post"
-                          action="RemoveUser.jsp"
-                          style="display:inline;"
+                    <form method="post" action="RemoveUser.jsp" style="display:inline;"
                           onsubmit="return confirm('Are you sure you want to remove this user?');">
 
-                        <input type="hidden"
-                               name="id"
-                               value="<%= user.getId() %>">
+                        <input type="hidden" name="id" value="<%= user.getId() %>">
 
-                        <button type="submit"
-                                class="remove-btn">
-                            <i class="fa fa-trash"></i>
-                            &nbsp; Remove
+                        <button type="submit" class="remove-btn"><i class="fa fa-trash"></i>
+                            Remove
                         </button>
-
                     </form>
-
                 </td>
-
             </tr>
-
             <%
             count++;
             }
-
             } else {
             %>
-
             <tr>
                 <td colspan="7"
                     style="text-align:center;padding:25px;color:#777777;">
                     No users found.
                 </td>
             </tr>
-
             <%
             }
             %>
-
             </tbody>
 
         </table>
 
     </div>
-
     </div>
 
     </div>

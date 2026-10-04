@@ -172,7 +172,6 @@ List<User> employees = userDAO.getActiveEmployees();
     List<Lead> leads;
 
         if (!search.trim().isEmpty()) {
-
         leads = dao.searchLeads(search.trim());
 
         } else {
@@ -564,38 +563,25 @@ List<User> employees = userDAO.getActiveEmployees();
 
             <h2>Lead</h2>
 
-            <form method="get"
-                  action="Lead.jsp"
-                  class="search-box">
-
+            <form method="get" action="Lead.jsp" class="search-box">
                 <i class="fa fa-search"></i>
-
-                <input type="text"
-                       name="search"
-                       value="<%= search %>"
-                       placeholder="Search lead...">
-
+                <input type="text" name="search" value="<%= search %>" placeholder="Search lead...">
             </form>
 
         </div>
 
         <% if (errorMessage != null && !errorMessage.isEmpty()) { %>
-
         <div class="message">
             <%= errorMessage %>
         </div>
-
         <% } %>
 
         <div class="filter-card">
 
-            <form method="get"
-                  action="Lead.jsp">
-
+            <form method="get" action="Lead.jsp">
                 <div class="filter-grid">
 
                     <div class="filter-group">
-
                         <label>Lead Source</label>
 
                         <select name="source">
@@ -671,7 +657,6 @@ List<User> employees = userDAO.getActiveEmployees();
                             </option>
 
                         </select>
-
                     </div>
 
                     <div class="filter-group">
@@ -686,12 +671,10 @@ List<User> employees = userDAO.getActiveEmployees();
                             </option>
 
                             <% for (User employee : employees) { %>
-
                             <option value="<%= employee.getFullName() %>"
                             <%= employee.getFullName().equals(assignTo) ? "selected" : "" %>>
                             <%= employee.getFullName() %>
                             </option>
-
                             <% } %>
 
                         </select>
@@ -699,128 +682,83 @@ List<User> employees = userDAO.getActiveEmployees();
                     </div>
 
                     <div class="filter-group">
-
                         <label>From Date</label>
-
-                        <input type="date"
-                               name="fromDate"
-                               value="<%= fromDate %>">
-
+                        <input type="date" name="fromDate" value="<%= fromDate %>">
                     </div>
 
                     <div class="filter-group">
-
                         <label>To Date</label>
-
-                        <input type="date"
-                               name="toDate"
-                               value="<%= toDate %>">
-
+                        <input type="date" name="toDate" value="<%= toDate %>">
                     </div>
 
                     <div class="filter-group">
 
-                        <button type="submit"
-                                class="filter-btn">
-
+                        <button type="submit" class="filter-btn">
                             <i class="fa fa-filter"></i>
                             &nbsp; Filter
-
                         </button>
 
                     </div>
-
                 </div>
-
             </form>
-
         </div>
 
         <div class="list-card">
-
             <div class="list-header">
 
                 <div class="list-title">
                     Lead List
                 </div>
 
-                <button type="button"
-                        class="add-btn"
-                        onclick="document.getElementById('addLeadBox').style.display='block';">
-
+                <button type="button" class="add-btn" onclick="document.getElementById('addLeadBox').style.display='block';">
                     <i class="fa fa-plus"></i>
                     &nbsp; Add Lead
-
                 </button>
 
             </div>
 
-            <div id="addLeadBox"
-                 class="add-lead-box"
+            <div id="addLeadBox" class="add-lead-box"
                  style="<%= editLead != null ? "display:block;" : "display:none;" %>">
 
             <div class="add-lead-title">
-
                 <%= editLead == null ? "Add Lead" : "Edit Lead" %>
-
             </div>
 
-            <form method="post"
-                  action="Lead.jsp">
+            <form method="post" action="Lead.jsp">
 
-                <input type="hidden"
-                       name="action"
-                       value="<%= editLead == null ? "add" : "update" %>">
+                <input type="hidden" name="action" value="<%= editLead == null ? "add" : "update" %>">
 
                 <div class="filter-grid">
 
                     <div class="filter-group">
-
                         <label>Lead ID</label>
 
-                        <input type="text"
-                               name="leadId"
-                               placeholder="Enter lead ID"
+                        <input type="text" name="leadId" placeholder="Enter lead ID"
                                value="<%= editLead == null ? "" : editLead.getLeadId() %>"
-                        <%= editLead != null ? "readonly" : "" %>
-                        required>
-
+                        <%= editLead != null ? "readonly" : "" %> required>
                     </div>
 
                     <div class="filter-group">
-
                         <label>Customer Name</label>
 
-                        <input type="text"
-                               name="customerName"
-                               placeholder="Enter customer name"
-                               value="<%= editLead == null ? "" : editLead.getCustomerName() %>"
-                        required>
-
+                        <input type="text" name="customerName" placeholder="Enter customer name"
+                               value="<%= editLead == null ? "" : editLead.getCustomerName() %>" required>
                     </div>
 
                     <div class="filter-group">
-
                         <label>Mobile No.</label>
 
-                        <input type="text"
-                               name="mobileNo"
-                               placeholder="Enter mobile number"
-                               value="<%= editLead == null ? "" : editLead.getMobileNo() %>"
-                        required>
-
+                        <input type="text" name="mobileNo" placeholder="Enter mobile number"
+                               value="<%= editLead == null ? "" : editLead.getMobileNo() %>" required>
                     </div>
 
                     <div class="filter-group">
 
                         <label>Lead Source</label>
 
-                        <select name="leadSource"
-                                required>
+                        <select name="leadSource" required>
 
-                            <option value="">
-                                Select Source
-                            </option>
+                            <option value="">Select Source</option>
 
                             <option value="Website"
                             <%= editLead != null && "Website".equals(editLead.getSource()) ? "selected" : "" %>>
@@ -852,15 +790,11 @@ List<User> employees = userDAO.getActiveEmployees();
                     </div>
 
                     <div class="filter-group">
-
                         <label>Lead Status</label>
 
-                        <select name="leadStatus"
-                                required>
+                        <select name="leadStatus" required>
 
-                            <option value="">
-                                Select Status
-                            </option>
+                            <option value="">Select Status</option>
 
                             <option value="new"
                             <%= editLead != null && "new".equals(editLead.getLeadStatus()) ? "selected" : "" %>>
@@ -888,84 +822,57 @@ List<User> employees = userDAO.getActiveEmployees();
                             </option>
 
                         </select>
-
                     </div>
 
                     <div class="filter-group">
 
                         <label>Assign To</label>
 
-                        <select name="assignTo"
-                                required>
+                        <select name="assignTo" required>
 
                             <option value="">
                                 Select Employee
                             </option>
 
                             <% for (User employee : employees) { %>
-
                             <option value="<%= employee.getFullName() %>"
                             <%= editLead != null
-                            && employee.getFullName().equals(editLead.getAssignTo())
-                            ? "selected"
-                            : "" %>>
+                            && employee.getFullName().equals(editLead.getAssignTo()) ? "selected" : "" %>>
                             <%= employee.getFullName() %>
                             </option>
-
                             <% } %>
 
                         </select>
-
                     </div>
 
                     <div class="filter-group">
-
                         <label>Created Date</label>
-
-                        <input type="date"
-                               name="createdDate"
-                               value="<%= editLead == null ? "" : editLead.getCreatedDate() %>"
-                        required>
-
+                        <input type="date" name="createdDate"
+                               value="<%= editLead == null ? "" : editLead.getCreatedDate() %>" required>
                     </div>
 
                 </div>
 
                 <div class="add-lead-buttons">
-
-                    <button type="submit"
-                            class="add-btn">
-
+                    <button type="submit" class="add-btn">
                         <i class="fa fa-save"></i>
                         &nbsp;
-
                         <%= editLead == null ? "Save Lead" : "Update Lead" %>
-
                     </button>
 
-                    <button type="button"
-                            class="cancel-btn"
-                            onclick="window.location.href='Lead.jsp';">
-
+                    <button type="button" class="cancel-btn" onclick="window.location.href='Lead.jsp';">
                         Cancel
-
                     </button>
-
                 </div>
-
             </form>
-
         </div>
 
         <div class="table-container">
-
             <table class="lead-table">
-
                 <thead>
 
                 <tr>
-
-                    <th>#</th>
+                    <th>S No</th>
                     <th>Lead ID</th>
                     <th>Customer Name</th>
                     <th>Mobile No.</th>
@@ -974,22 +881,16 @@ List<User> employees = userDAO.getActiveEmployees();
                     <th>Assign To</th>
                     <th>Created Date</th>
                     <th>Action</th>
-
                 </tr>
 
                 </thead>
 
                 <tbody>
-
                 <%
                 int count = 1;
-
                 if (leads != null && !leads.isEmpty()) {
-
                 for (int i = 0; i < leads.size(); i++) {
-
                 Lead lead = leads.get(i);
-
                 String statusClass = "status-default";
 
                 if ("new".equalsIgnoreCase(lead.getLeadStatus())) {
@@ -1014,148 +915,81 @@ List<User> employees = userDAO.getActiveEmployees();
                 %>
 
                 <tr>
+                    <td><%= count %></td>
+                    <td><%= lead.getLeadId() %></td>
+                    <td><%= lead.getCustomerName() %></td>
+                    <td><%= lead.getMobileNo() %></td>
+                    <td><%= lead.getSource() %></td>
 
                     <td>
-                        <%= count %>
-                    </td>
-
-                    <td>
-                        <%= lead.getLeadId() %>
-                    </td>
-
-                    <td>
-                        <%= lead.getCustomerName() %>
-                    </td>
-
-                    <td>
-                        <%= lead.getMobileNo() %>
-                    </td>
-
-                    <td>
-                        <%= lead.getSource() %>
-                    </td>
-
-                    <td>
-
                     <span class="lead-status <%= statusClass %>">
                         <%= lead.getLeadStatus() %>
                     </span>
-
                     </td>
 
-                    <td>
-                        <%= lead.getAssignTo() %>
-                    </td>
+                    <td><%= lead.getAssignTo() %></td>
+                    <td><%= lead.getCreatedDate() %></td>
 
                     <td>
-                        <%= lead.getCreatedDate() %>
-                    </td>
-
-                    <td>
-
                         <div class="action-buttons">
 
-                            <a href="Lead.jsp?editId=<%= lead.getLeadId() %>"
-                               class="edit-btn"
-                               title="Edit">
-
+                            <a href="Lead.jsp?editId=<%= lead.getLeadId() %>" class="edit-btn" title="Edit">
                                 <i class="fa fa-pen"></i>
-
                             </a>
 
-                            <form method="post"
-                                  action="Lead.jsp"
-                                  style="display:inline;"
+                            <form method="post" action="Lead.jsp" style="display:inline;"
                                   onsubmit="return confirm('Are you sure you want to delete this lead?');">
 
-                                <input type="hidden"
-                                       name="action"
-                                       value="delete">
+                                <input type="hidden" name="action" value="delete">
+                                <input type="hidden" name="deleteId" value="<%= lead.getLeadId() %>">
 
-                                <input type="hidden"
-                                       name="deleteId"
-                                       value="<%= lead.getLeadId() %>">
-
-                                <button type="submit"
-                                        class="delete-btn"
-                                        title="Delete">
-
+                                <button type="submit" class="delete-btn" title="Delete">
                                     <i class="fa fa-trash"></i>
-
                                 </button>
 
                             </form>
-
                         </div>
-
                     </td>
 
                 </tr>
-
                 <%
                 count++;
                 }
-
                 } else {
                 %>
-
                 <tr>
-
-                    <td colspan="9"
-                        style="text-align:center;padding:25px;color:#777777;">
-
+                    <td colspan="9" style="text-align:center;padding:25px;color:#777777;">
                         No lead records found.
-
                     </td>
-
                 </tr>
-
                 <%
                 }
                 %>
-
                 </tbody>
-
             </table>
 
         </div>
 
         <div class="table-footer">
-
             <div>
-
                 Showing 1 to <%= leads.size() %> of
                 <%= leads.size() %> entries
-
             </div>
 
             <div class="pagination">
-
-                <button type="button"
-                        class="page-btn">
-
+                <button type="button" class="page-btn">
                     <i class="fa fa-chevron-left"></i>
-
                 </button>
 
-                <button type="button"
-                        class="page-btn active">
-
+                <button type="button" class="page-btn active">
                     1
-
                 </button>
 
-                <button type="button"
-                        class="page-btn">
-
+                <button type="button" class="page-btn">
                     <i class="fa fa-chevron-right"></i>
-
                 </button>
-
             </div>
-
         </div>
-
         </div>
 
         </div>

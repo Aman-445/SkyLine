@@ -1047,7 +1047,7 @@ List<FollowUp> followUps;
 
                 <tr>
 
-                    <th>#</th>
+                    <th>S No</th>
                     <th>Enquiry ID</th>
                     <th>Customer Name</th>
                     <th>Mobile No.</th>

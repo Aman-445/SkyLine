@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DayBookDAO {
-
     public boolean addDayBook(DayBook dayBook) {
         String sql = "INSERT INTO day_book (transection_date, particulars, transaction_type, payment_mode, amount) VALUES (?, ?, ?, ?, ?)";
 
@@ -21,7 +20,6 @@ public class DayBookDAO {
             ps.setDouble(5, dayBook.getAmount());
 
             return ps.executeUpdate() > 0;
-
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -49,11 +47,9 @@ public class DayBookDAO {
 
                 list.add(dayBook);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return list;
     }
 
@@ -64,7 +60,6 @@ public class DayBookDAO {
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-
             ps.setInt(1, id);
 
             ResultSet rs = ps.executeQuery();
@@ -79,11 +74,9 @@ public class DayBookDAO {
                 dayBook.setPaymentMode(rs.getString("payment_mode"));
                 dayBook.setAmount(rs.getDouble("amount"));
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return dayBook;
     }
 
@@ -101,7 +94,6 @@ public class DayBookDAO {
             ps.setInt(6, dayBook.getId());
 
             return ps.executeUpdate() > 0;
-
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -117,14 +109,13 @@ public class DayBookDAO {
             ps.setInt(1, id);
 
             return ps.executeUpdate() > 0;
-
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
-    public List<DayBook> getFilteredDayBooks(String fromDate, String toDate,
-                                             String transactionType, String paymentMode) {
+
+    public List<DayBook> getFilteredDayBooks(String fromDate, String toDate, String transactionType, String paymentMode) {
 
         List<DayBook> list = new ArrayList<>();
 
@@ -133,19 +124,15 @@ public class DayBookDAO {
         if (fromDate != null && !fromDate.isEmpty()) {
             sql += " AND transection_date >= ?";
         }
-
         if (toDate != null && !toDate.isEmpty()) {
             sql += " AND transection_date <= ?";
         }
-
         if (transactionType != null && !transactionType.isEmpty()) {
             sql += " AND transaction_type = ?";
         }
-
         if (paymentMode != null && !paymentMode.isEmpty()) {
             sql += " AND payment_mode = ?";
         }
-
         sql += " ORDER BY transection_date DESC";
 
         try (Connection conn = DBConnection.getConnection();
@@ -156,15 +143,12 @@ public class DayBookDAO {
             if (fromDate != null && !fromDate.isEmpty()) {
                 ps.setDate(index++, java.sql.Date.valueOf(fromDate));
             }
-
             if (toDate != null && !toDate.isEmpty()) {
                 ps.setDate(index++, java.sql.Date.valueOf(toDate));
             }
-
             if (transactionType != null && !transactionType.isEmpty()) {
                 ps.setString(index++, transactionType);
             }
-
             if (paymentMode != null && !paymentMode.isEmpty()) {
                 ps.setString(index++, paymentMode);
             }
@@ -183,11 +167,9 @@ public class DayBookDAO {
 
                 list.add(dayBook);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return list;
     }
 
@@ -195,12 +177,8 @@ public class DayBookDAO {
 
         List<DayBook> list = new ArrayList<>();
 
-        String sql = "SELECT * FROM day_book "
-                + "WHERE particulars LIKE ? "
-                + "OR transaction_type LIKE ? "
-                + "OR payment_mode LIKE ? "
-                + "OR transection_date LIKE ? "
-                + "ORDER BY transection_date DESC";
+        String sql = "SELECT * FROM day_book " + "WHERE particulars LIKE ? " + "OR transaction_type LIKE ? "
+                + "OR payment_mode LIKE ? " + "OR transection_date LIKE ? " + "ORDER BY transection_date DESC";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -227,11 +205,9 @@ public class DayBookDAO {
 
                 list.add(dayBook);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return list;
     }
 }

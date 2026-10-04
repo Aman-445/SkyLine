@@ -417,27 +417,18 @@ List<PettyCash> pettyCashList;
 
         <h2>Petty Cash</h2>
 
-        <form method="get"
-              action="PettyCash.jsp"
-              class="search-box">
-
+        <form method="get" action="PettyCash.jsp" class="search-box">
             <i class="fa fa-search"></i>
 
-            <input type="text"
-                   name="search"
-                   value="<%= search %>"
-                   placeholder="Search petty cash...">
-
+            <input type="text" name="search" value="<%= search %>" placeholder="Search petty cash...">
         </form>
 
     </div>
 
     <% if (!message.isEmpty()) { %>
-
     <div class="message <%= messageType %>">
         <%= message %>
     </div>
-
     <% } %>
 
     <div class="pettycash-layout">
@@ -445,40 +436,26 @@ List<PettyCash> pettyCashList;
         <div class="pettycash-card">
 
             <div class="card-title">
-                <%= editPettyCash == null
-                ? "Add Petty Cash Entry"
-                : "Edit Petty Cash Entry" %>
+                <%= editPettyCash == null ? "Add Petty Cash Entry" : "Edit Petty Cash Entry" %>
             </div>
 
-            <form method="post"
-                  action="PettyCash.jsp">
+            <form method="post" action="PettyCash.jsp">
 
-                <input type="hidden"
-                       name="action"
-                       value="<%= editPettyCash == null ? "save" : "update" %>">
+                <input type="hidden" name="action" value="<%= editPettyCash == null ? "save" : "update" %>">
 
                 <% if (editPettyCash != null) { %>
-
-                <input type="hidden"
-                       name="id"
-                       value="<%= editPettyCash.getId() %>">
-
+                <input type="hidden" name="id" value="<%= editPettyCash.getId() %>">
                 <% } %>
 
                 <div class="form-grid">
-
                     <div class="form-group">
 
                         <label>
                             Date <span class="required">*</span>
                         </label>
 
-                        <input type="date"
-                               name="entryDate"
-                               value="<%= editPettyCash != null
-                                   ? editPettyCash.getEntryDate()
-                                   : "" %>"
-                        required>
+                        <input type="date" name="entryDate"
+                               value="<%= editPettyCash != null ? editPettyCash.getEntryDate(): "" %>" required>
 
                     </div>
 
@@ -490,11 +467,8 @@ List<PettyCash> pettyCashList;
 
                         <input type="text"
                                name="voucherNo"
-                               value="<%= editPettyCash != null
-                                   ? editPettyCash.getVoucherNo()
-                                   : "" %>"
-                        placeholder="PC-001"
-                        required>
+                               value="<%= editPettyCash != null ? editPettyCash.getVoucherNo() : "" %>"
+                        placeholder="PC-001" required>
 
                     </div>
 
@@ -506,9 +480,7 @@ List<PettyCash> pettyCashList;
 
                         <textarea name="particulars"
                                   placeholder="Enter particulars"
-                                  required><%= editPettyCash != null
-                                      ? editPettyCash.getParticulars()
-                                      : "" %></textarea>
+                                  required><%= editPettyCash != null? editPettyCash.getParticulars() : "" %></textarea>
 
                     </div>
 
@@ -518,8 +490,7 @@ List<PettyCash> pettyCashList;
                             Category <span class="required">*</span>
                         </label>
 
-                        <select name="category"
-                                required>
+                        <select name="category" required>
 
                             <option value="">
                                 Select Category
@@ -527,41 +498,31 @@ List<PettyCash> pettyCashList;
 
                             <option value="Office Expense"
                             <%= editPettyCash != null
-                            && "Office Expense".equals(editPettyCash.getCategory())
-                            ? "selected"
-                            : "" %>>
+                            && "Office Expense".equals(editPettyCash.getCategory()) ? "selected" : "" %>>
                             Office Expense
                             </option>
 
                             <option value="Traveling Expense"
                             <%= editPettyCash != null
-                            && "Traveling Expense".equals(editPettyCash.getCategory())
-                            ? "selected"
-                            : "" %>>
+                            && "Traveling Expense".equals(editPettyCash.getCategory()) ? "selected" : "" %>>
                             Traveling Expense
                             </option>
 
                             <option value="Printing & Stationery"
                             <%= editPettyCash != null
-                            && "Printing & Stationery".equals(editPettyCash.getCategory())
-                            ? "selected"
-                            : "" %>>
+                            && "Printing & Stationery".equals(editPettyCash.getCategory()) ? "selected" : "" %>>
                             Printing & Stationery
                             </option>
 
                             <option value="Courier Expense"
                             <%= editPettyCash != null
-                            && "Courier Expense".equals(editPettyCash.getCategory())
-                            ? "selected"
-                            : "" %>>
+                            && "Courier Expense".equals(editPettyCash.getCategory()) ? "selected" : "" %>>
                             Courier Expense
                             </option>
 
                             <option value="Other Expense"
                             <%= editPettyCash != null
-                            && "Other Expense".equals(editPettyCash.getCategory())
-                            ? "selected"
-                            : "" %>>
+                            && "Other Expense".equals(editPettyCash.getCategory()) ? "selected" : "" %>>
                             Other Expense
                             </option>
 
@@ -575,8 +536,7 @@ List<PettyCash> pettyCashList;
                             Payment Mode <span class="required">*</span>
                         </label>
 
-                        <select name="paymentMode"
-                                required>
+                        <select name="paymentMode" required>
 
                             <option value="">
                                 Select Mode
@@ -584,25 +544,19 @@ List<PettyCash> pettyCashList;
 
                             <option value="Cash"
                             <%= editPettyCash != null
-                            && "Cash".equals(editPettyCash.getPaymentMode())
-                            ? "selected"
-                            : "" %>>
+                            && "Cash".equals(editPettyCash.getPaymentMode()) ? "selected" : "" %>>
                             Cash
                             </option>
 
                             <option value="UPI"
                             <%= editPettyCash != null
-                            && "UPI".equals(editPettyCash.getPaymentMode())
-                            ? "selected"
-                            : "" %>>
+                            && "UPI".equals(editPettyCash.getPaymentMode()) ? "selected" : "" %>>
                             UPI
                             </option>
 
                             <option value="Bank"
                             <%= editPettyCash != null
-                            && "Bank".equals(editPettyCash.getPaymentMode())
-                            ? "selected"
-                            : "" %>>
+                            && "Bank".equals(editPettyCash.getPaymentMode()) ? "selected" : "" %>>
                             Bank
                             </option>
 
@@ -616,14 +570,10 @@ List<PettyCash> pettyCashList;
                             Amount (₹) <span class="required">*</span>
                         </label>
 
-                        <input type="number"
-                               name="amount"
-                               value="<%= editPettyCash != null
-                                   ? editPettyCash.getAmount()
-                                   : "" %>"
+                        <input type="number" name="amount"
+                               value="<%= editPettyCash != null? editPettyCash.getAmount() : "" %>"
                         placeholder="Enter amount"
-                        step="0.01"
-                        required>
+                        step="0.01" required>
 
                     </div>
 
@@ -633,11 +583,8 @@ List<PettyCash> pettyCashList;
                             Remarks
                         </label>
 
-                        <input type="text"
-                               name="remarks"
-                               value="<%= editPettyCash != null
-                                   ? editPettyCash.getRemarks()
-                                   : "" %>"
+                        <input type="text" name="remarks"
+                               value="<%= editPettyCash != null ? editPettyCash.getRemarks() : "" %>"
                         placeholder="Enter remarks (optional)">
 
                     </div>
@@ -646,47 +593,29 @@ List<PettyCash> pettyCashList;
 
                 <div class="form-buttons">
 
-                    <button type="submit"
-                            class="save-btn">
-
+                    <button type="submit" class="save-btn">
                         <i class="fa fa-save"></i>
-
                         &nbsp;
 
-                        <%= editPettyCash == null
-                        ? "Save Entry"
-                        : "Update Entry" %>
-
+                        <%= editPettyCash == null ? "Save Entry" : "Update Entry" %>
                     </button>
 
                     <% if (editPettyCash != null) { %>
 
-                    <a href="PettyCash.jsp"
-                       class="reset-btn">
-
+                    <a href="PettyCash.jsp" class="reset-btn">
                         <i class="fa fa-rotate-left"></i>
-
                         &nbsp; Cancel
-
                     </a>
 
                     <% } else { %>
-
-                    <button type="reset"
-                            class="reset-btn">
-
+                    <button type="reset" class="reset-btn">
                         <i class="fa fa-rotate-left"></i>
-
                         &nbsp; Reset
-
                     </button>
-
                     <% } %>
 
                 </div>
-
             </form>
-
         </div>
 
         <div class="pettycash-card">
@@ -702,12 +631,11 @@ List<PettyCash> pettyCashList;
             <div class="table-container">
 
                 <table class="pettycash-table">
-
                     <thead>
 
                     <tr>
 
-                        <th>#</th>
+                        <th>S No</th>
                         <th>Date</th>
                         <th>Voucher No.</th>
                         <th>Particulars</th>
@@ -724,101 +652,53 @@ List<PettyCash> pettyCashList;
 
                     <%
                     int count = 1;
-
                     if (pettyCashList != null && !pettyCashList.isEmpty()) {
-
                     for (int i = 0; i < pettyCashList.size(); i++) {
-
                     PettyCash pettyCash = pettyCashList.get(i);
                     %>
 
                     <tr>
-
-                        <td>
-                            <%= count %>
-                        </td>
-
-                        <td>
-                            <%= pettyCash.getEntryDate() %>
-                        </td>
-
-                        <td>
-                            <%= pettyCash.getVoucherNo() %>
-                        </td>
-
-                        <td>
-                            <%= pettyCash.getParticulars() %>
-                        </td>
-
-                        <td>
-                            <%= pettyCash.getCategory() %>
-                        </td>
-
-                        <td>
-                            <%= pettyCash.getPaymentMode() %>
-                        </td>
-
-                        <td>
-                            <%= String.format("%.2f", pettyCash.getAmount()) %>
-                        </td>
-
+                        <td><%= count %></td>
+                        <td><%= pettyCash.getEntryDate() %></td>
+                        <td><%= pettyCash.getVoucherNo() %></td>
+                        <td><%= pettyCash.getParticulars() %></td>
+                        <td><%= pettyCash.getCategory() %></td>
+                        <td><%= pettyCash.getPaymentMode() %></td>
+                        <td><%= String.format("%.2f", pettyCash.getAmount()) %></td>
                         <td>
 
                             <div class="action-buttons">
-
                                 <a href="PettyCash.jsp?editId=<%= pettyCash.getId() %>"
-                                   class="edit-btn"
-                                   title="Edit">
-
+                                   class="edit-btn" title="Edit">
                                     <i class="fa fa-pen"></i>
-
                                 </a>
 
-                                <form method="post"
-                                      action="PettyCash.jsp"
-                                      style="display:inline;"
+                                <form method="post" action="PettyCash.jsp" style="display:inline;"
                                       onsubmit="return confirm('Are you sure you want to delete this entry?');">
 
-                                    <input type="hidden"
-                                           name="action"
-                                           value="delete">
+                                    <input type="hidden" name="action" value="delete">
 
-                                    <input type="hidden"
-                                           name="id"
-                                           value="<%= pettyCash.getId() %>">
+                                    <input type="hidden" name="id" value="<%= pettyCash.getId() %>">
 
-                                    <button type="submit"
-                                            class="delete-btn"
-                                            title="Delete">
-
+                                    <button type="submit" class="delete-btn" title="Delete">
                                         <i class="fa fa-trash"></i>
-
                                     </button>
 
                                 </form>
-
                             </div>
-
                         </td>
 
                     </tr>
-
                     <%
                     count++;
                     }
-
                     } else {
                     %>
 
                     <tr>
-
-                        <td colspan="8"
-                            style="text-align:center;padding:25px;color:#777777;">
-
+                        <td colspan="8" style="text-align:center;padding:25px;color:#777777;">
                             No petty cash entries found.
-
                         </td>
-
                     </tr>
 
                     <%
@@ -826,7 +706,6 @@ List<PettyCash> pettyCashList;
                     %>
 
                     </tbody>
-
                 </table>
 
             </div>
@@ -834,7 +713,6 @@ List<PettyCash> pettyCashList;
             <div class="table-footer">
 
                 <div>
-
                     <% if (pettyCashList != null && !pettyCashList.isEmpty()) { %>
 
                     Showing 1 to <%= pettyCashList.size() %>
@@ -849,34 +727,20 @@ List<PettyCash> pettyCashList;
                 </div>
 
                 <div class="pagination">
-
-                    <button type="button"
-                            class="page-btn">
-
+                    <button type="button" class="page-btn">
                         <i class="fa fa-chevron-left"></i>
-
                     </button>
 
-                    <button type="button"
-                            class="page-btn active">
-
+                    <button type="button" class="page-btn active">
                         1
-
                     </button>
 
-                    <button type="button"
-                            class="page-btn">
-
+                    <button type="button" class="page-btn">
                         <i class="fa fa-chevron-right"></i>
-
                     </button>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
     </div>

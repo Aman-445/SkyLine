@@ -62,6 +62,7 @@ public class PettyCashDAO {
             return false;
         }
     }
+
     public PettyCash getPettyCashById(int id) {
         PettyCash pettyCash = null;
 
@@ -86,26 +87,17 @@ public class PettyCashDAO {
                 pettyCash.setAmount(rs.getDouble("amount"));
                 pettyCash.setRemarks(rs.getString("remarks"));
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return pettyCash;
     }
 
 
     public boolean updatePettyCash(PettyCash pettyCash) {
 
-        String sql = "UPDATE petty_cash SET "
-                + "voucher_no = ?, "
-                + "entry_date = ?, "
-                + "particulars = ?, "
-                + "category = ?, "
-                + "payment_mode = ?, "
-                + "amount = ?, "
-                + "remarks = ? "
-                + "WHERE id = ?";
+        String sql = "UPDATE petty_cash SET " + "voucher_no = ?, " + "entry_date = ?, " + "particulars = ?, "
+                + "category = ?, " + "payment_mode = ?, " + "amount = ?, " + "remarks = ? " + "WHERE id = ?";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -120,7 +112,6 @@ public class PettyCashDAO {
             ps.setInt(8, pettyCash.getId());
 
             return ps.executeUpdate() > 0;
-
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -132,13 +123,8 @@ public class PettyCashDAO {
 
         List<PettyCash> list = new ArrayList<>();
 
-        String sql = "SELECT * FROM petty_cash "
-                + "WHERE voucher_no LIKE ? "
-                + "OR particulars LIKE ? "
-                + "OR category LIKE ? "
-                + "OR payment_mode LIKE ? "
-                + "OR remarks LIKE ? "
-                + "ORDER BY entry_date DESC";
+        String sql = "SELECT * FROM petty_cash " + "WHERE voucher_no LIKE ? " + "OR particulars LIKE ? " + "OR category LIKE ? "
+                + "OR payment_mode LIKE ? " + "OR remarks LIKE ? " + "ORDER BY entry_date DESC";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -154,7 +140,6 @@ public class PettyCashDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-
                 PettyCash pettyCash = new PettyCash();
 
                 pettyCash.setId(rs.getInt("id"));
@@ -168,12 +153,9 @@ public class PettyCashDAO {
 
                 list.add(pettyCash);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return list;
     }
-
 }

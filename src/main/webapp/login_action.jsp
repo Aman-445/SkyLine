@@ -33,7 +33,7 @@ response.sendRedirect("Employee/AllEnquiry.jsp");
 
 } else {
 request.setAttribute("errorMessage", "This user type is not configured yet.");
-request.getRequestDispatcher("login.jsp").forward(request, response);
+request.getRequestDispatcher("login.jsp").forward(request, response);           //request.getRequestDispatcher("login.jsp") login.jsp ko find karega and .forward(request, response): current request and response ko login.jsp par forward karega
 }
 
 } else {

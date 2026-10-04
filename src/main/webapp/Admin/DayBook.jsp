@@ -471,91 +471,56 @@ List<DayBook> dayBookList = dayBookDAO.getAllDayBooks();
             <div class="daybook-header">
 
                 <div class="daybook-title">
-
                     <h2>Day Book</h2>
-
-                    <p>
-                        Summary of transactions for the selected date
-                    </p>
-
                 </div>
 
                 <div class="date-selector">
 
-                    <form method="get"
-                          action="DayBook.jsp">
+                    <form method="get" action="DayBook.jsp">
 
-                        <i class="fa fa-calendar"
-                           style="color:#24056f;">
-                        </i>
+                        <i class="fa fa-calendar" style="color:#24056f;"></i>
 
-                        <input type="date"
-                               name="selectedDate"
-                               class="date-input"
-                               value="<%= selectedDateText %>"
-                               required>
+                        <input type="date" name="selectedDate" class="date-input"
+                               value="<%= selectedDateText %>" required>
 
-                        <button type="submit"
-                                class="view-date-btn">
-
+                        <button type="submit" class="view-date-btn">
                             <i class="fa fa-search"></i>
                             &nbsp; View
-
                         </button>
 
                     </form>
-
                 </div>
-
             </div>
 
             <div class="daybook-container">
-
                 <div class="summary-header">
-
                     <div class="summary-title">
 
                         <div class="summary-icon">
-
                             <i class="fa fa-book"></i>
-
                         </div>
 
                         <div>
+                            <h3>Day Book Summary</h3>
 
-                            <h3>
-                                Day Book Summary
-                            </h3>
-
-                            <p>
-                                <%= displayDate %>
-                            </p>
-
+                            <p><%= displayDate %></p>
                         </div>
 
                     </div>
 
-                    <button type="button"
-                            class="print-btn"
-                            onclick="window.print()">
-
+                    <button type="button" class="print-btn" onclick="window.print()">
                         <i class="fa fa-print"></i>
                         &nbsp; Print
-
                     </button>
 
                 </div>
 
                 <div class="summary-cards">
-
                     <div class="summary-card client">
-
                         <div class="summary-card-top">
 
                             <div class="summary-card-icon">
-
                                 <i class="fa fa-user"></i>
-
                             </div>
 
                         </div>
@@ -567,31 +532,24 @@ List<DayBook> dayBookList = dayBookDAO.getAllDayBooks();
                             </div>
 
                             <div class="summary-card-amount">
-
                                 <i class="fa-solid fa-indian-rupee-sign"></i>
                                 <%= String.format("%.2f", clientPayment) %>
-
                             </div>
 
                         </div>
 
                         <div class="summary-card-footer">
-
                             <i class="fa fa-credit-card"></i>
                             &nbsp; Day Book Income
-
                         </div>
 
                     </div>
 
                     <div class="summary-card employee">
-
                         <div class="summary-card-top">
 
                             <div class="summary-card-icon">
-
                                 <i class="fa fa-users"></i>
-
                             </div>
 
                         </div>
@@ -603,31 +561,24 @@ List<DayBook> dayBookList = dayBookDAO.getAllDayBooks();
                             </div>
 
                             <div class="summary-card-amount">
-
                                 <i class="fa-solid fa-indian-rupee-sign"></i>
                                 <%= String.format("%.2f", employeePayment) %>
-
                             </div>
 
                         </div>
 
                         <div class="summary-card-footer">
-
                             <i class="fa fa-users"></i>
                             &nbsp; Employee Payments
-
                         </div>
 
                     </div>
 
                     <div class="summary-card vendor">
-
                         <div class="summary-card-top">
 
                             <div class="summary-card-icon">
-
                                 <i class="fa fa-briefcase"></i>
-
                             </div>
 
                         </div>
@@ -639,31 +590,24 @@ List<DayBook> dayBookList = dayBookDAO.getAllDayBooks();
                             </div>
 
                             <div class="summary-card-amount">
-
                                 <i class="fa-solid fa-indian-rupee-sign"></i>
                                 <%= String.format("%.2f", vendorPayment) %>
-
                             </div>
 
                         </div>
 
                         <div class="summary-card-footer">
-
                             <i class="fa fa-truck"></i>
                             &nbsp; Vendor Payments
-
                         </div>
 
                     </div>
 
                     <div class="summary-card expense">
-
                         <div class="summary-card-top">
 
                             <div class="summary-card-icon">
-
                                 <i class="fa fa-wallet"></i>
-
                             </div>
 
                         </div>
@@ -675,31 +619,24 @@ List<DayBook> dayBookList = dayBookDAO.getAllDayBooks();
                             </div>
 
                             <div class="summary-card-amount">
-
                                 <i class="fa-solid fa-indian-rupee-sign"></i>
                                 <%= String.format("%.2f", totalExpenses) %>
-
                             </div>
 
                         </div>
 
                         <div class="summary-card-footer">
-
                             <i class="fa fa-arrow-down"></i>
                             &nbsp; Total Expenses
-
                         </div>
 
                     </div>
 
                     <div class="summary-card income">
-
                         <div class="summary-card-top">
 
                             <div class="summary-card-icon">
-
                                 <i class="fa fa-line-chart"></i>
-
                             </div>
 
                         </div>
@@ -711,31 +648,24 @@ List<DayBook> dayBookList = dayBookDAO.getAllDayBooks();
                             </div>
 
                             <div class="summary-card-amount">
-
                                 <i class="fa-solid fa-indian-rupee-sign"></i>
                                 <%= String.format("%.2f", income) %>
-
                             </div>
 
                         </div>
 
                         <div class="summary-card-footer">
-
                             <i class="fa fa-arrow-up"></i>
                             &nbsp; Total Income
-
                         </div>
 
                     </div>
 
                     <div class="summary-card balance">
-
                         <div class="summary-card-top">
 
                             <div class="summary-card-icon">
-
                                 <i class="fa fa-balance-scale"></i>
-
                             </div>
 
                         </div>
@@ -747,37 +677,15 @@ List<DayBook> dayBookList = dayBookDAO.getAllDayBooks();
                             </div>
 
                             <div class="summary-card-amount">
-
                                 <i class="fa-solid fa-indian-rupee-sign"></i>
                                 <%= String.format("%.2f", netBalance) %>
-
                             </div>
 
                         </div>
 
                         <div class="summary-card-footer">
-
                             Income - Expenses
-
                         </div>
-
-                    </div>
-
-                </div>
-
-                <div class="daybook-info">
-
-                    <div class="daybook-info-icon">
-
-                        <i class="fa fa-info-circle"></i>
-
-                    </div>
-
-                    <div class="daybook-info-text">
-
-                        This summary shows transactions recorded for
-                        <strong><%= displayDate %></strong>.
-                        Employee and vendor payments are included in total expenses.
 
                     </div>
 

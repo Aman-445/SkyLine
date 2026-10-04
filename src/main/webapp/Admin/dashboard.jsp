@@ -29,15 +29,14 @@ PettyCashDAO pettyCashDAO = new PettyCashDAO();
 EmployeePaymentDAO employeePaymentDAO = new EmployeePaymentDAO();
 VendorPaymentDAO vendorPaymentDAO = new VendorPaymentDAO();
 
+//these lists are used to get data from the database and store it in memory
 List<Enquiry> enquiries = enquiryDAO.getAllEnquiries();
     List<FollowUp> followUps = followUpDAO.getFollowUps("All", "All", "", "");
         List<Lead> leads = leadDAO.getLeads("All", "All", "All", "", "");
             List<DayBook> dayBooks = dayBookDAO.getAllDayBooks();
                 List<PettyCash> pettyCashList = pettyCashDAO.getAllPettyCash();
-                    List<EmployeePayment> employeePaymentList =
-                        employeePaymentDAO.getAllEmployeePayments();
-                        List<VendorPayment> vendorPaymentList =
-                            vendorPaymentDAO.getAllVendorPayments();
+                    List<EmployeePayment> employeePaymentList = employeePaymentDAO.getAllEmployeePayments();
+                        List<VendorPayment> vendorPaymentList = vendorPaymentDAO.getAllVendorPayments();
 
                             int totalEnquiries = enquiries.size();
                             int totalFollowUps = followUps.size();
@@ -94,13 +93,14 @@ List<Enquiry> enquiries = enquiryDAO.getAllEnquiries();
                                     border: 1px solid #e5e7eb;
                                     border-radius: 8px;
                                     padding: 9px 14px;
-                                    color: #555555;
+                                    color: #6b0b7a;
                                     font-size: 12px;
+                                    font-weight: 600;
                                 }
 
                                 .dashboard-cards {
                                     display: grid;
-                                    grid-template-columns: repeat(5, minmax(0, 1fr));
+                                    grid-template-columns: repeat(4, 1fr); /*4 columns/cards take equal fraction of space */
                                     gap: 15px;
                                     margin-bottom: 25px;
                                 }
@@ -111,18 +111,8 @@ List<Enquiry> enquiries = enquiryDAO.getAllEnquiries();
                                     padding: 18px;
                                     box-shadow: 0 2px 10px rgba(0,0,0,0.06);
                                     border: 1px solid #f0f0f0;
-                                    position: relative;
-                                    overflow: hidden;
-                                }
-
-                                .dashboard-card::before {
-                                    content: "";
-                                    position: absolute;
-                                    left: 0;
-                                    top: 0;
-                                    width: 4px;
-                                    height: 100%;
-                                    background: #d62d70;
+                                    position: relative; /* it makes dashboard card reference for any position: absolute element inside it*/
+                                    /* overflow: hidden; makes the content hidden which will go outside the card */
                                 }
 
                                 .card-top {
@@ -134,8 +124,6 @@ List<Enquiry> enquiries = enquiryDAO.getAllEnquiries();
                                 .card-icon {
                                     width: 40px;
                                     height: 40px;
-                                    border-radius: 8px;
-                                    background: #f8eefc;
                                     color: #24056f;
                                     display: flex;
                                     align-items: center;
@@ -145,26 +133,25 @@ List<Enquiry> enquiries = enquiryDAO.getAllEnquiries();
 
                                 .card-label {
                                     color: #718096;
-                                    font-size: 12px;
-                                    margin-top: 15px;
+                                    font-size: 15px;
+                                    font-weight: 500;
+                                    margin: 5px 0px;
                                 }
 
                                 .card-value {
                                     color: #24056f;
                                     font-size: 24px;
                                     font-weight: 700;
-                                    margin-top: 5px;
+                                    margin : 5px 0px;
                                 }
 
                                 .card-subtitle {
-                                    color: #a0aec0;
+                                    color: #808fa2;
                                     font-size: 10px;
-                                    margin-top: 4px;
+                                    margin-top: 5px;
                                 }
 
                                 .dashboard-main {
-                                    display: grid;
-                                    grid-template-columns: 2fr 1fr;
                                     gap: 15px;
                                 }
 
@@ -173,25 +160,21 @@ List<Enquiry> enquiries = enquiryDAO.getAllEnquiries();
                                     border-radius: 10px;
                                     padding: 18px;
                                     box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-                                    border: 1px solid #f0f0f0;
                                 }
 
                                 .section-header {
-                                    display: flex;
-                                    justify-content: space-between;
-                                    align-items: center;
                                     margin-bottom: 18px;
                                 }
 
                                 .section-header h3 {
                                     color: #24056f;
-                                    font-size: 16px;
+                                    font-size: 18px;
                                     font-weight: 600;
                                 }
 
                                 .quick-actions {
                                     display: grid;
-                                    grid-template-columns: repeat(3, minmax(0, 1fr));
+                                    grid-template-columns: repeat(3,1fr);
                                     gap: 10px;
                                 }
 
@@ -200,7 +183,7 @@ List<Enquiry> enquiries = enquiryDAO.getAllEnquiries();
                                     align-items: center;
                                     gap: 10px;
                                     padding: 12px;
-                                    border: 1px solid #eeeeee;
+                                    border: 2px solid #eeeeee;
                                     border-radius: 8px;
                                     text-decoration: none;
                                     color: #303044;
@@ -222,65 +205,18 @@ List<Enquiry> enquiries = enquiryDAO.getAllEnquiries();
                                     align-items: center;
                                     justify-content: center;
                                     font-size: 14px;
-                                    flex-shrink: 0;
                                 }
 
                                 .quick-action span {
-                                    font-size: 11px;
-                                    font-weight: 500;
+                                    font-size: 16px;
+                                    font-weight: 400;
                                 }
 
-                                .summary-list {
-                                    display: flex;
-                                    flex-direction: column;
-                                    gap: 12px;
-                                }
 
-                                .summary-item {
-                                    display: flex;
-                                    justify-content: space-between;
-                                    align-items: center;
-                                    padding: 11px 12px;
-                                    background: #fafafa;
-                                    border-radius: 7px;
-                                }
-
-                                .summary-item-left {
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 9px;
-                                }
-
-                                .summary-item-icon {
-                                    width: 30px;
-                                    height: 30px;
-                                    border-radius: 6px;
-                                    background: #f8eefc;
-                                    color: #24056f;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    font-size: 13px;
-                                }
-
-                                .summary-item-name {
-                                    color: #555555;
-                                    font-size: 11px;
-                                }
-
-                                .summary-item-value {
-                                    color: #24056f;
-                                    font-size: 12px;
-                                    font-weight: 600;
-                                }
-
-                                .summary-amount {
-                                    color: #218838;
-                                }
 
                                 @media (max-width: 1400px) {
                                     .dashboard-cards {
-                                        grid-template-columns: repeat(3, minmax(0, 1fr));
+                                        grid-template-columns: repeat(3, 1fr);
                                     }
 
                                     .dashboard-main {
@@ -296,11 +232,11 @@ List<Enquiry> enquiries = enquiryDAO.getAllEnquiries();
                                     }
 
                                     .dashboard-cards {
-                                        grid-template-columns: repeat(2, minmax(0, 1fr));
+                                        grid-template-columns: repeat(2, 1fr);
                                     }
 
                                     .quick-actions {
-                                        grid-template-columns: repeat(2, minmax(0, 1fr));
+                                        grid-template-columns: repeat(2, 1fr);
                                     }
                                 }
 
@@ -316,572 +252,276 @@ List<Enquiry> enquiries = enquiryDAO.getAllEnquiries();
                             </style>
 
                             <div class="dashboard-header">
-
                                 <div class="dashboard-title">
-
                                     <h2>Admin Dashboard</h2>
-
-                                    <p>
-                                        Overview of your Skyline CRM activities
-                                    </p>
-
                                 </div>
 
                                 <div class="dashboard-date">
-
                                     <i class="fa fa-calendar"></i>
-                                    &nbsp;
                                     <%= new java.text.SimpleDateFormat("dd MMM yyyy").format(new java.util.Date()) %>
-
+                                    <!--new java.util.Date(): gets the current date and time-->
                                 </div>
-
                             </div>
 
                             <div class="dashboard-cards">
 
                                 <div class="dashboard-card">
-
                                     <div class="card-top">
 
                                         <div>
-
                                             <div class="card-label">
                                                 Total Enquiries
                                             </div>
-
                                             <div class="card-value">
                                                 <%= totalEnquiries %>
                                             </div>
-
                                             <div class="card-subtitle">
                                                 All enquiry records
                                             </div>
-
                                         </div>
 
                                         <div class="card-icon">
-
                                             <i class="fa fa-bars"></i>
-
                                         </div>
 
                                     </div>
-
                                 </div>
 
                                 <div class="dashboard-card">
-
                                     <div class="card-top">
 
                                         <div>
-
                                             <div class="card-label">
                                                 Follow Ups
                                             </div>
-
                                             <div class="card-value">
                                                 <%= totalFollowUps %>
                                             </div>
-
                                             <div class="card-subtitle">
                                                 Total follow up records
                                             </div>
-
                                         </div>
 
                                         <div class="card-icon">
-
                                             <i class="fa fa-volume-control-phone"></i>
-
                                         </div>
 
                                     </div>
-
                                 </div>
 
                                 <div class="dashboard-card">
-
                                     <div class="card-top">
 
                                         <div>
-
                                             <div class="card-label">
                                                 Total Leads
                                             </div>
-
                                             <div class="card-value">
                                                 <%= totalLeads %>
                                             </div>
-
                                             <div class="card-subtitle">
                                                 All lead records
                                             </div>
-
                                         </div>
 
                                         <div class="card-icon">
-
                                             <i class="fa fa-line-chart"></i>
-
                                         </div>
 
                                     </div>
-
                                 </div>
 
                                 <div class="dashboard-card">
-
                                     <div class="card-top">
 
                                         <div>
-
                                             <div class="card-label">
                                                 Day Book
                                             </div>
-
                                             <div class="card-value">
                                                 <%= totalDayBookEntries %>
                                             </div>
-
                                             <div class="card-subtitle">
                                                 Total transactions
                                             </div>
-
                                         </div>
 
                                         <div class="card-icon">
-
                                             <i class="fa fa-book"></i>
-
                                         </div>
 
                                     </div>
-
                                 </div>
 
                                 <div class="dashboard-card">
-
                                     <div class="card-top">
 
                                         <div>
-
                                             <div class="card-label">
                                                 Petty Cash
                                             </div>
-
                                             <div class="card-value">
                                                 <i class="fa-solid fa-indian-rupee-sign"></i>
                                                 <%= String.format("%.2f", totalPettyCashAmount) %>
                                             </div>
-
                                             <div class="card-subtitle">
                                                 Total petty cash
                                             </div>
-
                                         </div>
 
                                         <div class="card-icon">
-
                                             <i class="fa fa-briefcase"></i>
-
                                         </div>
 
                                     </div>
-
                                 </div>
 
                                 <div class="dashboard-card">
-
                                     <div class="card-top">
 
                                         <div>
-
                                             <div class="card-label">
                                                 Vendor Payment
                                             </div>
-
                                             <div class="card-value">
                                                 <i class="fa-solid fa-indian-rupee-sign"></i>
                                                 <%= String.format("%.2f", totalVendorPayment) %>
                                             </div>
-
                                             <div class="card-subtitle">
                                                 Total vendor payments
                                             </div>
-
                                         </div>
 
                                         <div class="card-icon">
-
                                             <i class="fa fa-credit-card"></i>
-
                                         </div>
 
                                     </div>
-
                                 </div>
 
                                 <div class="dashboard-card">
-
                                     <div class="card-top">
 
                                         <div>
-
                                             <div class="card-label">
                                                 Employee Payment
                                             </div>
-
                                             <div class="card-value">
                                                 <i class="fa-solid fa-indian-rupee-sign"></i>
                                                 <%= String.format("%.2f", totalEmployeePayment) %>
                                             </div>
-
                                             <div class="card-subtitle">
                                                 Total employee payments
                                             </div>
-
                                         </div>
 
                                         <div class="card-icon">
-
                                             <i class="fa fa-users"></i>
-
                                         </div>
 
                                     </div>
-
                                 </div>
-
                             </div>
 
                             <div class="dashboard-main">
-
                                 <div class="dashboard-section">
 
                                     <div class="section-header">
-
-                                        <h3>
-                                            Quick Actions
-                                        </h3>
-
+                                        <h3>Quick Actions</h3>
                                     </div>
 
                                     <div class="quick-actions">
 
-                                        <a href="<%=request.getContextPath()%>/Admin/AddUser.jsp"
-                                           class="quick-action">
-
+                                        <a href="<%=request.getContextPath()%>/Admin/AddUser.jsp" class="quick-action">
                                             <div class="quick-action-icon">
                                                 <i class="fa fa-user-plus"></i>
                                             </div>
-
-                                            <span>
-                    Add User
-                </span>
-
+                                            <span>Add User</span>
                                         </a>
 
-                                        <a href="<%=request.getContextPath()%>/Admin/DisplayUser.jsp"
-                                           class="quick-action">
+                                        <a href="<%=request.getContextPath()%>/Admin/DisplayUser.jsp" class="quick-action">
 
                                             <div class="quick-action-icon">
                                                 <i class="fa fa-users"></i>
                                             </div>
-
-                                            <span>
-                    Display User
-                </span>
-
+                                            <span>Display User</span>
                                         </a>
 
-                                        <a href="<%=request.getContextPath()%>/Admin/UpdateUser.jsp"
-                                           class="quick-action">
+                                        <a href="<%=request.getContextPath()%>/Admin/UpdateUser.jsp" class="quick-action">
 
                                             <div class="quick-action-icon">
                                                 <i class="fa fa-pencil-square"></i>
                                             </div>
-
-                                            <span>
-                    Update User
-                </span>
-
+                                            <span>Update User</span>
                                         </a>
 
-                                        <a href="<%=request.getContextPath()%>/Admin/RemoveUser.jsp"
-                                           class="quick-action">
+                                        <a href="<%=request.getContextPath()%>/Admin/RemoveUser.jsp" class="quick-action">
 
                                             <div class="quick-action-icon">
                                                 <i class="fa fa-user-minus"></i>
                                             </div>
-
-                                            <span>
-                    Remove User
-                </span>
-
+                                            <span>Remove User</span>
                                         </a>
 
-                                        <a href="<%=request.getContextPath()%>/Admin/AllEnquiry.jsp"
-                                           class="quick-action">
+                                        <a href="<%=request.getContextPath()%>/Admin/AllEnquiry.jsp" class="quick-action">
 
                                             <div class="quick-action-icon">
                                                 <i class="fa fa-bars"></i>
                                             </div>
-
-                                            <span>
-                    All Enquiry
-                </span>
-
+                                            <span>All Enquiry</span>
                                         </a>
 
-                                        <a href="<%=request.getContextPath()%>/Admin/FollowUp.jsp"
-                                           class="quick-action">
+                                        <a href="<%=request.getContextPath()%>/Admin/FollowUp.jsp" class="quick-action">
 
                                             <div class="quick-action-icon">
                                                 <i class="fa fa-volume-control-phone"></i>
                                             </div>
-
-                                            <span>
-                    Follow Up
-                </span>
-
+                                            <span>Follow Up</span>
                                         </a>
 
-                                        <a href="<%=request.getContextPath()%>/Admin/Lead.jsp"
-                                           class="quick-action">
+                                        <a href="<%=request.getContextPath()%>/Admin/Lead.jsp" class="quick-action">
 
                                             <div class="quick-action-icon">
                                                 <i class="fa fa-line-chart"></i>
                                             </div>
-
-                                            <span>
-                    Lead
-                </span>
-
+                                            <span>Lead</span>
                                         </a>
 
-                                        <a href="<%=request.getContextPath()%>/Admin/DayBook.jsp"
-                                           class="quick-action">
+                                        <a href="<%=request.getContextPath()%>/Admin/DayBook.jsp" class="quick-action">
 
                                             <div class="quick-action-icon">
                                                 <i class="fa fa-book"></i>
                                             </div>
-
-                                            <span>
-                    Day Book
-                </span>
-
+                                            <span>Day Book</span>
                                         </a>
 
-                                        <a href="<%=request.getContextPath()%>/Admin/PettyCash.jsp"
-                                           class="quick-action">
+                                        <a href="<%=request.getContextPath()%>/Admin/PettyCash.jsp" class="quick-action">
 
                                             <div class="quick-action-icon">
                                                 <i class="fa fa-briefcase"></i>
                                             </div>
-
-                                            <span>
-                    Petty Cash
-                </span>
-
+                                            <span>Petty Cash</span>
                                         </a>
 
-                                        <a href="<%=request.getContextPath()%>/Admin/VendorPayment.jsp"
-                                           class="quick-action">
+                                        <a href="<%=request.getContextPath()%>/Admin/VendorPayment.jsp" class="quick-action">
 
                                             <div class="quick-action-icon">
                                                 <i class="fa fa-credit-card"></i>
                                             </div>
-
-                                            <span>
-                    Vendor Payment
-                </span>
-
+                                            <span>Vendor Payment</span>
                                         </a>
 
-                                        <a href="<%=request.getContextPath()%>/Admin/EmployeePayment.jsp"
-                                           class="quick-action">
+                                        <a href="<%=request.getContextPath()%>/Admin/EmployeePayment.jsp" class="quick-action">
 
                                             <div class="quick-action-icon">
                                                 <i class="fa fa-inr"></i>
                                             </div>
-
-                                            <span>
-                    Employee Payment
-                </span>
-
+                                            <span>Employee Payment</span>
                                         </a>
 
                                     </div>
-
                                 </div>
 
-                                <div class="dashboard-section">
-
-                                    <div class="section-header">
-
-                                        <h3>
-                                            Financial Summary
-                                        </h3>
-
-                                    </div>
-
-                                    <div class="summary-list">
-
-                                        <div class="summary-item">
-
-                                            <div class="summary-item-left">
-
-                                                <div class="summary-item-icon">
-                                                    <i class="fa fa-book"></i>
-                                                </div>
-
-                                                <span class="summary-item-name">
-                        Day Book
-                    </span>
-
-                                            </div>
-
-                                            <span class="summary-item-value summary-amount">
-
-                    <i class="fa-solid fa-indian-rupee-sign"></i>
-                    <%= String.format("%.2f", totalDayBookAmount) %>
-
-                </span>
-
-                                        </div>
-
-                                        <div class="summary-item">
-
-                                            <div class="summary-item-left">
-
-                                                <div class="summary-item-icon">
-                                                    <i class="fa fa-briefcase"></i>
-                                                </div>
-
-                                                <span class="summary-item-name">
-                        Petty Cash
-                    </span>
-
-                                            </div>
-
-                                            <span class="summary-item-value summary-amount">
-
-                    <i class="fa-solid fa-indian-rupee-sign"></i>
-                    <%= String.format("%.2f", totalPettyCashAmount) %>
-
-                </span>
-
-                                        </div>
-
-                                        <div class="summary-item">
-
-                                            <div class="summary-item-left">
-
-                                                <div class="summary-item-icon">
-                                                    <i class="fa fa-credit-card"></i>
-                                                </div>
-
-                                                <span class="summary-item-name">
-                        Vendor Payment
-                    </span>
-
-                                            </div>
-
-                                            <span class="summary-item-value summary-amount">
-
-                    <i class="fa-solid fa-indian-rupee-sign"></i>
-                    <%= String.format("%.2f", totalVendorPayment) %>
-
-                </span>
-
-                                        </div>
-
-                                        <div class="summary-item">
-
-                                            <div class="summary-item-left">
-
-                                                <div class="summary-item-icon">
-                                                    <i class="fa fa-users"></i>
-                                                </div>
-
-                                                <span class="summary-item-name">
-                        Employee Payment
-                    </span>
-
-                                            </div>
-
-                                            <span class="summary-item-value summary-amount">
-
-                    <i class="fa-solid fa-indian-rupee-sign"></i>
-                    <%= String.format("%.2f", totalEmployeePayment) %>
-
-                </span>
-
-                                        </div>
-
-                                        <div class="summary-item">
-
-                                            <div class="summary-item-left">
-
-                                                <div class="summary-item-icon">
-                                                    <i class="fa fa-bars"></i>
-                                                </div>
-
-                                                <span class="summary-item-name">
-                        Enquiries
-                    </span>
-
-                                            </div>
-
-                                            <span class="summary-item-value">
-                    <%= totalEnquiries %>
-                </span>
-
-                                        </div>
-
-                                        <div class="summary-item">
-
-                                            <div class="summary-item-left">
-
-                                                <div class="summary-item-icon">
-                                                    <i class="fa fa-line-chart"></i>
-                                                </div>
-
-                                                <span class="summary-item-name">
-                        Leads
-                    </span>
-
-                                            </div>
-
-                                            <span class="summary-item-value">
-                    <%= totalLeads %>
-                </span>
-
-                                        </div>
-
-                                        <div class="summary-item">
-
-                                            <div class="summary-item-left">
-
-                                                <div class="summary-item-icon">
-                                                    <i class="fa fa-volume-control-phone"></i>
-                                                </div>
-
-                                                <span class="summary-item-name">
-                        Follow Ups
-                    </span>
-
-                                            </div>
-
-                                            <span class="summary-item-value">
-                    <%= totalFollowUps %>
-                </span>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
 
                             </div>
 
